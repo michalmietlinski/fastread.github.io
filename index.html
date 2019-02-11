@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>FastRead</title>
-</head>
-<body >
-    <div id="app">
+    <head>
+        <title>FastRead</title>
+    </head>
+    <body>
+        <div id="app">
             <h1>{{ header }}</h1>
-            <textarea v-on:change="reading()" v-model="texttoread"></textarea>
+            <textarea v-on:change="restart();reading()" v-model="texttoread"></textarea>
             <!-- {{texttoread}} -->
-
             <div>
-                {{readtext}}
+                Speed
+                <input type="text" v-on:change="restart();reading()" v-model="speed" />
+            </div>
+            <div>
+                Words
+                <input type="number" v-on:change="restart();reading()"  v-model="wordperline" />
             </div>
 
-    </div>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script type="text/javascript">
+            <div>
+                <h1>{{readtext}}</h1>
+            </div>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script type="text/javascript">
     var app = new Vue({
       el: '#app',
       data: {
@@ -24,6 +32,9 @@
         partialtext: '',
         readtext: 'HERE',
         wordcount: 0,
+        speed: 250,
+        wordperline:4,
+        splitted: [],
       },
       watch: {
             texttoread: function (val) {
@@ -34,20 +45,32 @@
         },
         methods: {
            reading: function() {
-                let splitted= this.texttoread.split(' ')
-               if(this.wordcount < splitted.length){
-                this.readtext=splitted[this.wordcount];
+               if(this.wordperline > 0){
+                   
+                if(this.wordcount < this.splitted.length){
+                this.readtext=this.splitted[this.wordcount];
                 setTimeout(()=> {
                     this.wordcount++;
                     this.reading()
-                }, 250);
+                }, 60*1000/this.speed);
                }
-           } 
+             }
+           },
+           restart: function() {
+            this.wordcount=0;
+            if(this.splitted.length <= 0){
+                    let splittedtemp= this.texttoread.split(' ');
+                    for(let i=0;i<(splittedtemp.length/this.wordperline);i++){
+                        this.splitted[i]=splittedtemp.splice(0,this.wordperline).join(' ');
+
+                    }
+                   }
+           }
         }
       
     })
     </script>
-</body>
+    </body>
 
-    
+
 </html>
