@@ -43,15 +43,14 @@
             },
         },
         methods: {
-           reading: function() {
-               if(this.wordperline > 0){
+           reading: function(stop) {
+               if(!stop && this.wordperline > 0){
                 if(this.wordcount < this.splitted.length){
                 this.readtext=this.splitted[this.wordcount];
-                console.log(this.speed)
                 setTimeout(()=> {
                     this.wordcount++;
                     this.reading()
-                }, 60*1000/this.speed);
+                }, this.wordperline*60*1000/this.speed);
                }
              }
            },
@@ -62,6 +61,7 @@
                         this.splitted[i]=splittedtemp.splice(0,this.wordperline).join(' ');
                     }
                    this.reading.bind(this);
+                   this.reading(true);
                    this.reading();
                    sessionStorage.setItem('speed', this.speed);
                    sessionStorage.setItem('wordperline', this.wordperline)
