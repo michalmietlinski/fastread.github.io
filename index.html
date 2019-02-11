@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FastRead</title>
+</head>
+<body >
+    <div id="app">
+            <h1>{{ header }}</h1>
+            <textarea v-on:change="reading()" v-model="texttoread"></textarea>
+            <!-- {{texttoread}} -->
+
+            <div>
+                {{readtext}}
+            </div>
+
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        header: 'Fast read! Simple tool to make reading quicker!',
+        texttoread: '',
+        partialtext: '',
+        readtext: 'HERE',
+        wordcount: 0,
+      },
+      watch: {
+            texttoread: function (val) {
+            this.partialtext = val.split(' ')
+            this.wordcount=0;
+            },
+            
+        },
+        methods: {
+           reading: function() {
+                let splitted= this.texttoread.split(' ')
+               if(this.wordcount < splitted.length){
+                this.readtext=splitted[this.wordcount];
+                setTimeout(()=> {
+                    this.wordcount++;
+                    this.reading()
+                }, 250);
+               }
+           } 
+        }
+      
+    })
+    </script>
+</body>
+
+    
+</html>
