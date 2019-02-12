@@ -20,6 +20,8 @@
                 <button v-on:click="stop()">Stop</button>
             <button v-on:click="start()">Start</button>
             <button v-on:click="restart()">restart</button>
+            <button v-on:click="rewind()">rewind</button>
+
 
             </div>
             <div>
@@ -63,7 +65,7 @@
            },
            restart: function() {
             this.wordcount=0;
-                    let splittedtemp= this.texttoread.split(' ');
+                    let splittedtemp= this.texttoread.split(/[ ,\s]+/);
                     let lengths=splittedtemp.length
                     this.currentplay=new Date();
                     for(let i=0;i<(lengths/this.wordperline);i++){
@@ -81,6 +83,9 @@
                 this.reading.bind(this);
                 this.reading(this.currentplay);
            },
+           revind: function(){
+            this.wordcount=this.wordcount-4;
+           }
         }
       
     })
