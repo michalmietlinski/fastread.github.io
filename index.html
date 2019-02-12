@@ -17,6 +17,12 @@
                 <input type="number" v-on:change="restart();"  v-model="wordperline" />
             </div>
             <div>
+                <button v-on:click="stop()">Stop</button>
+            <button v-on:click="start()">Start</button>
+            <button v-on:click="restart()">restart</button>
+
+            </div>
+            <div>
                 <h1>{{readtext}}</h1>
             </div>
             <hr />
@@ -35,6 +41,7 @@
         speed: sessionStorage.getItem('speed') || 250,
         wordperline: sessionStorage.getItem('wordperline') || 1,
         splitted: [],
+        currentplay: ''
       },
       watch: {
             texttoread: function (val) {
@@ -43,13 +50,13 @@
             },
         },
         methods: {
-           reading: function(stop) {
-               if(!stop && this.wordperline > 0){
-                if(this.wordcount < this.splitted.length){
+           reading: function(play) {
+               if(this.wordperline > 0){
+                if(this.wordcount < this.splitted.length && this.currentplay===play){
                 this.readtext=this.splitted[this.wordcount];
-                setTimeout(()=> {
+                    setTimeout(()=> {
                     this.wordcount++;
-                    this.reading()
+                    this.reading(play)
                 }, this.wordperline*60*1000/this.speed);
                }
              }
@@ -57,14 +64,22 @@
            restart: function() {
             this.wordcount=0;
                     let splittedtemp= this.texttoread.split(' ');
-                    for(let i=0;i<(splittedtemp.length);i++){
+                    let lengths=splittedtemp.length
+                    this.currentplay=new Date();
+                    for(let i=0;i<(lengths/this.wordperline);i++){
                         this.splitted[i]=splittedtemp.splice(0,this.wordperline).join(' ');
                     }
                    this.reading.bind(this);
-                   this.reading(true);
-                   this.reading();
+                   this.reading(this.currentplay);
                    sessionStorage.setItem('speed', this.speed);
                    sessionStorage.setItem('wordperline', this.wordperline)
+           },
+           stop: function() {
+                   this.currentplay=new Date();
+           },
+           start: function() {
+                this.reading.bind(this);
+                this.reading(this.currentplay);
            },
         }
       
