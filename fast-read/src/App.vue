@@ -1,15 +1,32 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-            <router-link to="/jumper">Jumper</router-link>
+      <router-link to="/">{{titleHome}}</router-link> |
+      <router-link to="/timer">{{titleTimer}}</router-link> | 
+            <router-link to="/jumper">{{titleJumper}}</router-link> |
+            <router-link to="/faq">{{titleFaq}}</router-link> |
+            <router-link to="/contact">{{titleContact}}</router-link>
 
     </div>
     <router-view/>
   </div>
 </template>
-
+<script>
+import Copy from './assets/copy';
+export default {
+  name: 'appView',
+  data: function() {
+    return {
+      titleHome: Copy.menu.home,
+      titleTimer: Copy.menu.timer,
+      titleJumper: Copy.menu.jumper,
+      titleFaq: Copy.menu.faq,
+      titleContact: Copy.menu.contact
+    }
+  },
+  
+}
+</script>
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -26,6 +43,16 @@
     &.router-link-exact-active {
       color: #42b983;
     }
+  }
+}
+button{
+  background: #489e54;
+  border:none;
+  margin: 0 3px;
+  padding:3px 10px;
+  color: rgb(241, 241, 241);
+  &:hover {
+    background: #218a5b
   }
 }
 </style>

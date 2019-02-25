@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="timer">
     <Counter/>
   </div>
 </template>
@@ -9,7 +9,7 @@
 import Counter from '@/components/Counter.vue';
 
 export default {
-  name: 'about',
+  name: 'timer',
   components: {
     Counter,
   },

@@ -75,18 +75,52 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+textarea {
+        min-width:500px;
+        min-height:300px;
+    }
+    .container{
+        display:block;
+       width:100%;
+       height:600px;
+       position: relative;
+       background: #302e2e;
+       color: #ff1919;
+       text-transform: uppercase;
+    }
+.topleft{
+        position: absolute;
+        left:0;
+        top:0;
+        padding:20px;
+    }
+    .topright{
+        position: absolute;
+        right:0;
+        top:0;
+        padding:20px;
+    }
+    .bottomleft{
+        position: absolute;
+        left:0;
+        bottom:0;
+        padding:20px;
+    }
+    .bottomright{
+        position: absolute;
+        right:0;
+        bottom:0;
+        padding:20px;
+    }
+    .container textarea{
+        position:absolute;
+        left:50%;
+        top:50%;
+        transform:translate(-50%, -50%);
+    }
+    .container .controller{
+        position:absolute;
+        left:50%;
+        transform:translate(-50%);
+    }
 </style>

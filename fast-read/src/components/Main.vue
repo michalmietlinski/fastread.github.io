@@ -3,22 +3,22 @@
     <textarea v-on:change="restart();" v-model="texttoread"></textarea>
             <!-- {{texttoread}} -->
             <div>
-                Speed
+                {{copyControlsSpeed}}
                 <input type="number" v-on:change="restart();" v-model="speed" />
             </div>
             <div>
-                Words
+                {{copyControlsWords}}
                 <input type="number" v-on:change="restart();"  v-model="wordperline" />
             </div>
             <div>
-                Rows
+                {{copyControlsRows}}
                 <input type="number" v-on:change="restart();"  v-model="numberofrows" />
             </div>
             <div>
-                <button v-on:click="stop()">Stop</button>
-            <button v-on:click="start()">Start</button>
-            <button v-on:click="restart()">restart</button>
-            <button v-on:click="rewind()">rewind</button>
+                <button v-on:click="stop()">{{copyControlsStop}}</button>
+            <button v-on:click="start()">{{copyControlsStart}}</button>
+            <button v-on:click="restart()">{{copyControlsRestart}}</button>
+            <button v-on:click="rewind()">{{copyControlsRewind}}</button>
 
 
             </div>
@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import Copy from '@/assets/copy';
+
 export default {
   name: 'Main',
   props: {
@@ -37,6 +39,13 @@ export default {
   },
   data: () =>{
     return {
+      copyControlsSpeed: Copy.controls.speed,
+      copyControlsWords: Copy.controls.words,
+      copyControlsRows: Copy.controls.rows,
+      copyControlsStop: Copy.controls.stop,
+      copyControlsStart: Copy.controls.start,
+      copyControlsRestart: Copy.controls.restart,
+      copyControlsRewind: Copy.controls.rewind,
       header: 'Fast read! Simple tool to make reading quicker!',
         texttoread: '',
         partialtext: '',
@@ -126,4 +135,17 @@ li {
 a {
   color: #42b983;
 }
+textarea {
+        min-width:500px;
+        min-height:300px;
+    }
+    .container{
+        display:block;
+       width:100%;
+       height:600px;
+       position: relative;
+       background: #302e2e;
+       color: #ff1919;
+       text-transform: uppercase;
+    }
 </style>

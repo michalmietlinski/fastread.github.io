@@ -3,9 +3,9 @@
     <textarea v-if="!watchplaying" v-model="texttoread2"></textarea>
     <div v-if="watchplaying">{{texttoread2}}</div>
 
-    <button v-on:click="stopWatch()">Stop</button>
-    <button v-on:click="startWatch()">Start</button>
-    <button v-on:click="resetWatch()">Reset</button>
+    <button v-on:click="stopWatch()">{{copyControlsStop}}</button>
+    <button v-on:click="startWatch()">{{copyControlsStart}}</button>
+    <button v-on:click="resetWatch()">{{copyControlsReset}}</button>
 
     <div>{{watchtime}}</div>
     <div>{{watchresult}}</div>
@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import Copy from '@/assets/copy';
+
 export default {
   name: "Counter",
   props: {
@@ -21,6 +23,9 @@ export default {
   },
   data: () => {
     return {
+      copyControlsStop: Copy.controls.stop,
+      copyControlsStart: Copy.controls.start,
+      copyControlsReset: Copy.controls.reset,
       texttoread2: '',
       wordcount: 0,
       speed: parseInt(sessionStorage.getItem("speed"), 10) || 250,
@@ -94,4 +99,17 @@ li {
 a {
   color: #42b983;
 }
+textarea {
+        min-width:500px;
+        min-height:300px;
+    }
+    .container{
+        display:block;
+       width:100%;
+       height:600px;
+       position: relative;
+       background: #302e2e;
+       color: #ff1919;
+       text-transform: uppercase;
+    }
 </style>
