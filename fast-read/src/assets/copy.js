@@ -16,6 +16,12 @@ const copy = {
     rewind: 'Rewind',
     reset: 'Reset',
   },
+  faq: [
+    { 
+    question: 'Question',
+    answear: 'Answear'
+    }
+  ]
 };
 
 module.exports = copy;

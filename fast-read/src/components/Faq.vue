@@ -1,18 +1,21 @@
 <template>
  <div>
+   {{abc}}
  </div>
 </template>
 
 <script>
+import Copy from '@/assets/copy';
 export default {
   name: 'Main',
   props: {
     msg: String,
   },
   data: () => ({
+    abc: 'nnaaan'
   }),
 
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- ELEMENTS MOVED TO APP - NOTHING HERE -->
