@@ -1,9 +1,11 @@
 <template>
  <div>
    <ul class="faq-css">
+     <input v.bind="">
      <li v-for="(item, index) in copy" v-bind:key="index">
-      {{item.question}} <br/> 
-      {{item.answear}} <hr>
+      <span v-on:click="open(index)">{{item.question}}</span><br/>
+      <hr>
+      <span v-show="showarr[index]">{{item.answear}}</span>
      </li>
    </ul>
  </div>
@@ -17,11 +19,27 @@ export default {
   props: {
     msg: String,
   },
+  // computed: () => {
+  //   result: this.showarr
+  // },
   data: () => ({
     abc: 'an',
-    copy: Copy.faq
+    copy: Copy.faq,
+    showarr:[false],
   }),
+  methods: {
+    open: function(index) {
+      
+        this.$nextTick(()=>{this.showarr[0] = true});
 
+
+        if(this.showarr[index] !== true){
+          this.showarr[index]=true;
+        }else{
+          this.showarr[index]=false;
+        }
+    }
+  }
 };
 </script>
 
