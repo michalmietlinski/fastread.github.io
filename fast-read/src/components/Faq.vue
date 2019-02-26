@@ -1,12 +1,11 @@
 <template>
  <div>
    <ul class="faq-css">
-     <input v.bind="">
-     <li v-for="(item, index) in copy" v-bind:key="index">
-      <span v-on:click="open(index)">{{item.question}}</span><br/>
+     <ul v-for="(item, index) in copy" v-bind:key="index">
+      <li v-on:click="open(index)">{{item.question}}</li><br/><br/>
+      <li v-show="item.opened">{{item.answear}}</li>
       <hr>
-      <span v-show="item.opened">{{item.answear}}</span>
-     </li>
+     </ul>
    </ul>
  </div>
 </template>
@@ -16,9 +15,6 @@ import Copy from '@/assets/copy.js';
 
 export default {
   name: 'Main',
-  // computed: () => {
-  //   result: this.showarr
-  // },
   data: () => ({
     abc: 'an',
     copy: Copy.faq.map((el)=>{
