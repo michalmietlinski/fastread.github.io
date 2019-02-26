@@ -17,11 +17,15 @@ const copy = {
     reset: 'Reset',
   },
   faq: [
-    { 
-    question: 'Question',
-    answear: 'Answear'
-    }
-  ]
+    {
+      question: 'Question',
+      answear: 'Answear',
+    },
+    {
+      question: 'Question2',
+      answear: 'Answear2',
+    },
+  ],
 };
 
-module.exports = copy;
+export default copy;
