@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Copy from '@/assets/copy';
+import Copy from '@/assets/copy.js';
 
 export default {
   name: 'Main',
