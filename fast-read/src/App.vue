@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">{{titleHome}}</router-link> |
-      <router-link to="/timer">{{titleTimer}}</router-link> | 
+      <router-link to="/timer">{{titleTimer}}</router-link> |
             <router-link to="/jumper">{{titleJumper}}</router-link> |
             <router-link to="/faq">{{titleFaq}}</router-link> |
             <router-link to="/contact">{{titleContact}}</router-link>
@@ -13,19 +13,20 @@
 </template>
 <script>
 import Copy from './assets/copy';
+
 export default {
   name: 'appView',
-  data: function() {
+  data() {
     return {
       titleHome: Copy.menu.home,
       titleTimer: Copy.menu.timer,
       titleJumper: Copy.menu.jumper,
       titleFaq: Copy.menu.faq,
-      titleContact: Copy.menu.contact
-    }
+      titleContact: Copy.menu.contact,
+    };
   },
-  
-}
+
+};
 </script>
 <style lang="scss">
 #app {

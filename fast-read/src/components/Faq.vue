@@ -9,11 +9,9 @@ export default {
   props: {
     msg: String,
   },
-  data: () =>{
-    return {
-    }
-  },
-  
+  data: () => ({
+  }),
+
 };
 </script>
 

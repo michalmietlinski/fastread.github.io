@@ -17,37 +17,35 @@
 import Copy from '@/assets/copy';
 
 export default {
-  name: "Counter",
+  name: 'Counter',
   props: {
-    msg: String
+    msg: String,
   },
-  data: () => {
-    return {
-      copyControlsStop: Copy.controls.stop,
-      copyControlsStart: Copy.controls.start,
-      copyControlsReset: Copy.controls.reset,
-      texttoread2: '',
-      wordcount: 0,
-      speed: parseInt(sessionStorage.getItem("speed"), 10) || 250,
-      wordperline: parseInt(sessionStorage.getItem("wordperline"), 10) || 1,
-      splitted: [],
-      currentplay: "",
-      playing: false,
-      watchtime: 0,
-      watchplaying: false,
-      starttime: 0,
-      stoptime: 0,
-      watchresult: {}
-    };
-  },
+  data: () => ({
+    copyControlsStop: Copy.controls.stop,
+    copyControlsStart: Copy.controls.start,
+    copyControlsReset: Copy.controls.reset,
+    texttoread2: '',
+    wordcount: 0,
+    speed: parseInt(sessionStorage.getItem('speed'), 10) || 250,
+    wordperline: parseInt(sessionStorage.getItem('wordperline'), 10) || 1,
+    splitted: [],
+    currentplay: '',
+    playing: false,
+    watchtime: 0,
+    watchplaying: false,
+    starttime: 0,
+    stoptime: 0,
+    watchresult: {},
+  }),
   watch: {
-    texttoread: function(val) {
-      this.partialtext = val.split(" ");
+    texttoread(val) {
+      this.partialtext = val.split(' ');
       this.wordcount = 0;
-    }
+    },
   },
   methods: {
-    watch: function() {
+    watch() {
       if (this.watchplaying) {
         setTimeout(() => {
           this.watchtime = this.watchtime + 10;
@@ -55,7 +53,7 @@ export default {
         }, 10);
       }
     },
-    startWatch: function() {
+    startWatch() {
       if (!this.watchplaying) {
         this.starttime = new Date();
         this.watchplaying = true;
@@ -63,23 +61,23 @@ export default {
         this.watch();
       }
     },
-    stopWatch: function() {
+    stopWatch() {
       this.watchplaying = false;
       this.stoptime = new Date();
       this.watchresult = {
         time: this.stoptime - this.starttime,
         words: this.texttoread2.split(/[ ,\s]+/).length,
-        "words per minute": Math.floor(
-          (this.texttoread2.split(/[ ,\s]+/).length * 1000 * 60) /
-            (this.stoptime - this.starttime)
-        )
+        'words per minute': Math.floor(
+          (this.texttoread2.split(/[ ,\s]+/).length * 1000 * 60)
+            / (this.stoptime - this.starttime),
+        ),
       };
     },
-    resetWatch: function() {
+    resetWatch() {
       this.watchplaying = false;
       this.watchtime = 0;
-    }
-  }
+    },
+  },
 };
 </script>
 

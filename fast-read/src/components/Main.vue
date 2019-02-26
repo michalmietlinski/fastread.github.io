@@ -37,85 +37,82 @@ export default {
   props: {
     msg: String,
   },
-  data: () =>{
-    return {
-      copyControlsSpeed: Copy.controls.speed,
-      copyControlsWords: Copy.controls.words,
-      copyControlsRows: Copy.controls.rows,
-      copyControlsStop: Copy.controls.stop,
-      copyControlsStart: Copy.controls.start,
-      copyControlsRestart: Copy.controls.restart,
-      copyControlsRewind: Copy.controls.rewind,
-      header: 'Fast read! Simple tool to make reading quicker!',
-        texttoread: '',
-        partialtext: '',
-        numberofrows: parseInt(sessionStorage.getItem('numberofrows'),10) || 1,
-        readtext: 'HERE',
-        wordcount: 0,
-        speed: parseInt(sessionStorage.getItem('speed'),10) || 250,
-        wordperline: parseInt(sessionStorage.getItem('wordperline'),10) || 1,
-        splitted: [],
-        currentplay: '',
-        playing:false,
-    }
-  },
+  data: () => ({
+    copyControlsSpeed: Copy.controls.speed,
+    copyControlsWords: Copy.controls.words,
+    copyControlsRows: Copy.controls.rows,
+    copyControlsStop: Copy.controls.stop,
+    copyControlsStart: Copy.controls.start,
+    copyControlsRestart: Copy.controls.restart,
+    copyControlsRewind: Copy.controls.rewind,
+    header: 'Fast read! Simple tool to make reading quicker!',
+    texttoread: '',
+    partialtext: '',
+    numberofrows: parseInt(sessionStorage.getItem('numberofrows'), 10) || 1,
+    readtext: 'HERE',
+    wordcount: 0,
+    speed: parseInt(sessionStorage.getItem('speed'), 10) || 250,
+    wordperline: parseInt(sessionStorage.getItem('wordperline'), 10) || 1,
+    splitted: [],
+    currentplay: '',
+    playing: false,
+  }),
   watch: {
-            texttoread: function (val) {
-            this.partialtext = val.split(' ')
-            this.wordcount=0;
-            },
-        },
+    texttoread(val) {
+      this.partialtext = val.split(' ');
+      this.wordcount = 0;
+    },
+  },
   methods: {
-           reading: function(play) {
-               if(this.wordperline > 0){
-                if(this.wordcount < this.splitted.length && this.currentplay===play){
-                    this.playing=true;
-                    this.readtext=this.splitted[this.wordcount];
-                    if(this.numberofrows>1){
-                        for(let i=1;i<parseInt(this.numberofrows,10);i++){
-                            if(this.splitted[this.wordcount+i]){
-                                this.readtext=this.readtext.concat('$#$');
-                                this.readtext=this.readtext.concat(this.splitted[this.wordcount+i]);
-                            }
-                            
-                        }
-                    }
-                    setTimeout(()=> {
-                    this.wordcount=this.wordcount+parseInt(this.numberofrows,10);
-                    this.reading(play)
-                }, this.wordperline*this.numberofrows*60*1000/this.speed);
-               }
-             }
-           },
-           restart: function() {
-            this.wordcount=0;
-                    let splittedtemp= this.texttoread.split(/[ ,\s]+/);
-                    let lengths=splittedtemp.length;
-                    this.splitted=[];
-                    this.currentplay=new Date();
-                    for(let i=0;i<(lengths/this.wordperline);i++){
-                        this.splitted[i]=splittedtemp.splice(0,this.wordperline).join(' ');
-                    }
-                   this.reading.bind(this);
-                   this.reading(this.currentplay);
-                   sessionStorage.setItem('speed', this.speed);
-                   sessionStorage.setItem('wordperline', this.wordperline)
-                   sessionStorage.setItem('numberofrows', this.numberofrows)
-           },
-           stop: function() {
-                   this.currentplay=new Date();
-                   this.playing=false;
-           },
-           start: function() {
-                this.reading.bind(this);
-                if(!this.playing){
-                    this.reading(this.currentplay);
-                }
-           },
-           rewind: function(){
-            this.wordcount=this.wordcount > 4? this.wordcount-4 : 0;
-           },
-  }
+    reading(play) {
+      if (this.wordperline > 0) {
+        if (this.wordcount < this.splitted.length && this.currentplay === play) {
+          this.playing = true;
+          this.readtext = this.splitted[this.wordcount];
+          if (this.numberofrows > 1) {
+            for (let i = 1; i < parseInt(this.numberofrows, 10); i++) {
+              if (this.splitted[this.wordcount + i]) {
+                this.readtext = this.readtext.concat('$#$');
+                this.readtext = this.readtext.concat(this.splitted[this.wordcount + i]);
+              }
+            }
+          }
+          setTimeout(() => {
+            this.wordcount = this.wordcount + parseInt(this.numberofrows, 10);
+            this.reading(play);
+          }, this.wordperline * this.numberofrows * 60 * 1000 / this.speed);
+        }
+      }
+    },
+    restart() {
+      this.wordcount = 0;
+      const splittedtemp = this.texttoread.split(/[ ,\s]+/);
+      const lengths = splittedtemp.length;
+      this.splitted = [];
+      this.currentplay = new Date();
+      for (let i = 0; i < (lengths / this.wordperline); i++) {
+        this.splitted[i] = splittedtemp.splice(0, this.wordperline).join(' ');
+      }
+      this.reading.bind(this);
+      this.reading(this.currentplay);
+      sessionStorage.setItem('speed', this.speed);
+      sessionStorage.setItem('wordperline', this.wordperline);
+      sessionStorage.setItem('numberofrows', this.numberofrows);
+    },
+    stop() {
+      this.currentplay = new Date();
+      this.playing = false;
+    },
+    start() {
+      this.reading.bind(this);
+      if (!this.playing) {
+        this.reading(this.currentplay);
+      }
+    },
+    rewind() {
+      this.wordcount = this.wordcount > 4 ? this.wordcount - 4 : 0;
+    },
+  },
 };
 </script>
 
