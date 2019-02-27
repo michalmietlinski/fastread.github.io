@@ -7,7 +7,9 @@
       <router-link to="/faq">{{titleFaq}}</router-link>|
       <router-link to="/contact">{{titleContact}}</router-link>
     </div>
-    <router-view/>
+    <transition name="router-anim" enter-active-class="animated bounceInLeft">
+          <router-view/>
+    </transition>
     <div>
       Settings section
 
@@ -30,7 +32,12 @@ export default {
   }
 };
 </script>
+<style>
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css";
+
+</style>
 <style lang="scss">
+
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
