@@ -1,14 +1,18 @@
 <template>
   <div>
-    <textarea v-if="!watchplaying" v-model="texttoread2"></textarea>
-    <div v-if="watchplaying">{{texttoread2}}</div>
-
-    <button v-on:click="stopWatch()">{{copyControlsStop}}</button>
-    <button v-on:click="startWatch()">{{copyControlsStart}}</button>
-    <button v-on:click="resetWatch()">{{copyControlsReset}}</button>
-
-    <div>{{watchtime}}</div>
-    <div>{{watchresult}}</div>
+    <div class="inputtext">
+      <textarea v-if="!watchplaying" v-model="texttoread2"></textarea>
+    </div>
+    <div class="resulttext" v-if="watchplaying">{{texttoread2}}</div>
+    <div class="controls">
+      <button v-on:click="stopWatch()">{{copyControlsStop}}</button>
+      <button v-on:click="startWatch()">{{copyControlsStart}}</button>
+      <button v-on:click="resetWatch()">{{copyControlsReset}}</button>
+    </div>
+    <div class="results">
+      <div>{{watchtime}}</div>
+      <div>{{watchresult}}</div>
+    </div>
     <hr>
   </div>
 </template>

@@ -1,11 +1,11 @@
 <template>
  <div>
    <ul class="faq-css">
-     <ul v-for="(item, index) in copy" v-bind:key="index">
-      <li v-on:click="open(index)">{{item.question}}</li><br/><br/>
-      <li v-show="item.opened">{{item.answear}}</li>
+     <li v-for="(item, index) in copy" v-bind:key="index">
+      <h3 v-on:click="open(index)">{{item.question}}<span class="opened">{{item.opened ? '+' : '-'}}</span></h3>
+      <span v-show="item.opened">{{item.answear}}</span>
       <hr>
-     </ul>
+     </li>
    </ul>
  </div>
 </template>
@@ -34,3 +34,22 @@ export default {
 </script>
 
 <!-- ELEMENTS MOVED TO APP - NOTHING HERE -->
+<style lang="scss">
+.faq-css{
+  max-width:500px;
+  display:block;
+  margin: 0 auto;
+}
+li {
+  display:block;
+  text-align:left;
+  margin-bottom:30px;
+  .opened{
+    float: right;
+  }
+  h3{
+    cursor: pointer;
+  }
+}
+
+</style>

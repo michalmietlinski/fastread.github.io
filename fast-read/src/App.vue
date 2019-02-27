@@ -1,36 +1,34 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">{{titleHome}}</router-link> |
-      <router-link to="/timer">{{titleTimer}}</router-link> |
-            <router-link to="/jumper">{{titleJumper}}</router-link> |
-            <router-link to="/faq">{{titleFaq}}</router-link> |
-            <router-link to="/contact">{{titleContact}}</router-link>
-
+      <router-link to="/">{{titleHome}}</router-link>|
+      <router-link to="/timer">{{titleTimer}}</router-link>|
+      <router-link to="/jumper">{{titleJumper}}</router-link>|
+      <router-link to="/faq">{{titleFaq}}</router-link>|
+      <router-link to="/contact">{{titleContact}}</router-link>
     </div>
     <router-view/>
   </div>
 </template>
 <script>
-import Copy from './assets/copy';
+import Copy from "./assets/copy";
 
 export default {
-  name: 'appView',
+  name: "appView",
   data() {
     return {
       titleHome: Copy.menu.home,
       titleTimer: Copy.menu.timer,
       titleJumper: Copy.menu.jumper,
       titleFaq: Copy.menu.faq,
-      titleContact: Copy.menu.contact,
+      titleContact: Copy.menu.contact
     };
-  },
-
+  }
 };
 </script>
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -46,14 +44,14 @@ export default {
     }
   }
 }
-button{
+button {
   background: #489e54;
-  border:none;
+  border: none;
   margin: 0 3px;
-  padding:3px 10px;
+  padding: 3px 10px;
   color: rgb(241, 241, 241);
   &:hover {
-    background: #218a5b
+    background: #218a5b;
   }
 }
 // CONTACT + COUNTER + MAIN - THE SAME STYL FOR CSS
@@ -72,18 +70,32 @@ a {
   color: #42b983;
 }
 textarea {
-        min-width:500px;
-        min-height:300px;
+  min-width: 500px;
+  min-height: 300px;
+}
+.container {
+  display: block;
+  width: 100%;
+  height: 600px;
+  position: relative;
+  background: #302e2e;
+  color: #ff1919;
+  text-transform: uppercase;
+}
+.controls{
+  text-align: left;
+}
+.results{
+    text-align: left;
+}
+.inputtext{
+      text-align: left;
+}
+.resulttext{
+    text-align: left;
+    &.centered{
+      text-align:center;
     }
-    .container{
-        display:block;
-       width:100%;
-       height:600px;
-       position: relative;
-       background: #302e2e;
-       color: #ff1919;
-       text-transform: uppercase;
-    }
+}
 </style>
 
-</style>
