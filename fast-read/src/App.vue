@@ -8,6 +8,10 @@
       <router-link to="/contact">{{titleContact}}</router-link>
     </div>
     <router-view/>
+    <div>
+      Settings section
+
+    </div>
   </div>
 </template>
 <script>

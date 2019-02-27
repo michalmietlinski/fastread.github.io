@@ -6,7 +6,7 @@
     <div class="controls">
       <div>
         {{copyControlsSpeed}}
-        <input type="number" v-on:change="restart();" v-model="speed">
+        <input type="number" v-on:change="updateSpeed" :value="speed">
       </div>
       <div>
         {{copyControlsWords}}
@@ -32,12 +32,9 @@
 
 <script>
 import Copy from "@/assets/copy";
-
+import {mapState} from 'vuex';
 export default {
   name: "Main",
-  props: {
-    msg: String
-  },
   data: () => ({
     copyControlsSpeed: Copy.controls.speed,
     copyControlsWords: Copy.controls.words,
@@ -52,12 +49,16 @@ export default {
     numberofrows: parseInt(sessionStorage.getItem("numberofrows"), 10) || 1,
     readtext: "HERE",
     wordcount: 0,
-    speed: parseInt(sessionStorage.getItem("speed"), 10) || 250,
     wordperline: parseInt(sessionStorage.getItem("wordperline"), 10) || 1,
     splitted: [],
     currentplay: "",
     playing: false
   }),
+  computed: {
+      ...mapState([
+      'speed'
+    ]),
+  },
   watch: {
     texttoread(val) {
       this.partialtext = val.split(" ");
@@ -101,7 +102,6 @@ export default {
       }
       this.reading.bind(this);
       this.reading(this.currentplay);
-      sessionStorage.setItem("speed", this.speed);
       sessionStorage.setItem("wordperline", this.wordperline);
       sessionStorage.setItem("numberofrows", this.numberofrows);
     },
@@ -117,6 +117,11 @@ export default {
     },
     rewind() {
       this.wordcount = this.wordcount > 4 ? this.wordcount - 4 : 0;
+    },
+    updateSpeed(e) {
+      this.$store.dispatch('setSpeed', e.target.value)
+      this.restart.bind(this);
+      this.reading(this.restart);
     }
   }
 };

@@ -19,11 +19,10 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
+
 export default {
   name: 'Jumper',
-  props: {
-    msg: String,
-  },
   data: () => ({
     spot0: 'A',
     spot1: 'B',
