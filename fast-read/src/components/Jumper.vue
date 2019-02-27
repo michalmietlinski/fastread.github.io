@@ -23,6 +23,7 @@ import {mapState} from 'vuex';
 
 export default {
   name: 'Jumper',
+  
   data: () => ({
     spot0: 'A',
     spot1: 'B',

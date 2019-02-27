@@ -26,15 +26,13 @@ export default {
     msg: String,
   },
   data: () => ({
+    // Responsible for the copy
     copyControlsStop: Copy.controls.stop,
     copyControlsStart: Copy.controls.start,
     copyControlsReset: Copy.controls.reset,
+    // Responsible for content
     texttoread2: '',
     wordcount: 0,
-    speed: parseInt(sessionStorage.getItem('speed'), 10) || 250,
-    wordperline: parseInt(sessionStorage.getItem('wordperline'), 10) || 1,
-    splitted: [],
-    currentplay: '',
     playing: false,
     watchtime: 0,
     watchplaying: false,

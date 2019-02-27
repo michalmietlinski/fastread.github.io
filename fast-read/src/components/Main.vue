@@ -10,11 +10,11 @@
       </div>
       <div>
         {{copyControlsWords}}
-        <input type="number" v-on:change="restart();" v-model="wordperline">
+        <input type="number" v-on:change="updateWordperline" :value="wordperline">
       </div>
       <div>
         {{copyControlsRows}}
-        <input type="number" v-on:change="restart();" v-model="numberofrows">
+        <input type="number" v-on:change="updateNumberofrows" :value="numberofrows">
       </div>
       <div>
         <button v-on:click="stop()">{{copyControlsStop}}</button>
@@ -36,6 +36,7 @@ import {mapState} from 'vuex';
 export default {
   name: "Main",
   data: () => ({
+    // Responsible for the copy
     copyControlsSpeed: Copy.controls.speed,
     copyControlsWords: Copy.controls.words,
     copyControlsRows: Copy.controls.rows,
@@ -43,20 +44,20 @@ export default {
     copyControlsStart: Copy.controls.start,
     copyControlsRestart: Copy.controls.restart,
     copyControlsRewind: Copy.controls.rewind,
-    header: "Fast read! Simple tool to make reading quicker!",
+    // Responsible for showing text
     texttoread: "",
     partialtext: "",
-    numberofrows: parseInt(sessionStorage.getItem("numberofrows"), 10) || 1,
-    readtext: "HERE",
+    readtext: "Text to display",
     wordcount: 0,
-    wordperline: parseInt(sessionStorage.getItem("wordperline"), 10) || 1,
     splitted: [],
     currentplay: "",
     playing: false
   }),
   computed: {
       ...mapState([
-      'speed'
+      'speed',
+      'wordperline',
+      'numberofrows'
     ]),
   },
   watch: {
@@ -122,7 +123,17 @@ export default {
       this.$store.dispatch('setSpeed', e.target.value)
       this.restart.bind(this);
       this.reading(this.restart);
-    }
+    },
+    updateWordperline(e) {
+      this.$store.dispatch('setWordperline', e.target.value)
+      this.restart.bind(this);
+      this.reading(this.restart);
+    },
+    updateNumberofrows(e) {
+      this.$store.dispatch('setNumberofrows', e.target.value)
+      this.restart.bind(this);
+      this.reading(this.restart);
+    },
   }
 };
 </script>
