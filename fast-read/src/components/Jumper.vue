@@ -6,8 +6,8 @@
     <div class="bottomright">{{spot3}}</div>
     <textarea v-model="texttoread3"></textarea>
     <div class="controller">
-      <button v-on:click="startjump()">Start</button>
-      <button v-on:click="stopjump()">Stop</button>
+      <button v-on:click="startjump()">{{copy.menu  ? copy.controls.start : ''}}</button>
+      <button v-on:click="stopjump()">{{copy.menu  ? copy.controls.stop : ''}}</button>
       <input type="number" v-model="jumpspeed">
       <input type="checkbox" v-model="jumprandom">
       <div>
@@ -36,6 +36,11 @@ export default {
     jumpstop: false,
     texttoread3: '',
   }),
+  computed: {
+      ...mapState([
+      'copy'
+    ]),
+  },
   methods: {
     startjump() {
       this.jumpwordstable = this.texttoread3.split(/[ ,\s]+/);

@@ -5,9 +5,9 @@
     </div>
     <div class="resulttext" v-if="watchplaying">{{texttoread2}}</div>
     <div class="controls">
-      <button v-on:click="stopWatch()">{{copyControlsStop}}</button>
-      <button v-on:click="startWatch()">{{copyControlsStart}}</button>
-      <button v-on:click="resetWatch()">{{copyControlsReset}}</button>
+      <button v-on:click="stopWatch()">{{copy.menu  ? copy.controls.stop : ''}}</button>
+      <button v-on:click="startWatch()">{{copy.menu  ? copy.controls.start : ''}}</button>
+      <button v-on:click="resetWatch()">{{copy.menu  ? copy.controls.reset : ''}}</button>
     </div>
     <div class="results">
       <div>{{watchtime}}</div>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Copy from '@/assets/copy';
+import {mapState} from 'vuex';
 
 export default {
   name: 'Counter',
@@ -26,10 +26,6 @@ export default {
     msg: String,
   },
   data: () => ({
-    // Responsible for the copy
-    copyControlsStop: Copy.controls.stop,
-    copyControlsStart: Copy.controls.start,
-    copyControlsReset: Copy.controls.reset,
     // Responsible for content
     texttoread2: '',
     wordcount: 0,
@@ -40,6 +36,11 @@ export default {
     stoptime: 0,
     watchresult: {},
   }),
+  computed: {
+      ...mapState([
+      'copy'
+    ]),
+  },
   watch: {
     texttoread(val) {
       this.partialtext = val.split(' ');

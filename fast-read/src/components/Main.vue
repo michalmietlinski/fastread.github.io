@@ -5,22 +5,25 @@
     </div>
     <div class="controls">
       <div>
-        {{copyControlsSpeed}}
+        {{copy.menu ? copy.controls.speed : ''}}
         <input type="number" v-on:change="updateSpeed" :value="speed">
+        <span v-on:click="addSpeed(50)">+50</span>
+      <span v-on:click="addSpeed(100)">+100</span>
       </div>
       <div>
-        {{copyControlsWords}}
+        {{copy.menu  ? copy.controls.words : ''}}
         <input type="number" v-on:change="updateWordperline" :value="wordperline">
       </div>
       <div>
-        {{copyControlsRows}}
+        {{copy.menu  ? copy.controls.rows : ''}}
         <input type="number" v-on:change="updateNumberofrows" :value="numberofrows">
       </div>
       <div>
-        <button v-on:click="stop()">{{copyControlsStop}}</button>
-        <button v-on:click="start()">{{copyControlsStart}}</button>
-        <button v-on:click="restart()">{{copyControlsRestart}}</button>
-        <button v-on:click="rewind()">{{copyControlsRewind}}</button>
+        <button v-on:click="stop()">{{copy.menu  ? copy.controls.stop : ''}}</button>
+        <button v-on:click="start()">{{copy.menu  ? copy.controls.start: ''}}</button>
+        <button v-on:click="restart()">{{copy.menu  ? copy.controls.restart: ''}}</button>
+        <button v-on:click="rewind()">{{copy.menu  ? copy.controls.rewind: ''}}</button>
+        
       </div>
     </div>
     <div class="resulttext centered">
@@ -31,19 +34,10 @@
 </template>
 
 <script>
-import Copy from "@/assets/copy";
 import {mapState} from 'vuex';
 export default {
   name: "Main",
   data: () => ({
-    // Responsible for the copy
-    copyControlsSpeed: Copy.controls.speed,
-    copyControlsWords: Copy.controls.words,
-    copyControlsRows: Copy.controls.rows,
-    copyControlsStop: Copy.controls.stop,
-    copyControlsStart: Copy.controls.start,
-    copyControlsRestart: Copy.controls.restart,
-    copyControlsRewind: Copy.controls.rewind,
     // Responsible for showing text
     texttoread: "",
     partialtext: "",
@@ -57,7 +51,8 @@ export default {
       ...mapState([
       'speed',
       'wordperline',
-      'numberofrows'
+      'numberofrows',
+      'copy'
     ]),
   },
   watch: {
@@ -133,6 +128,10 @@ export default {
       this.$store.dispatch('setNumberofrows', e.target.value)
       this.restart.bind(this);
       this.reading(this.restart);
+    },
+    addSpeed(speed){
+      this.$store.dispatch('setSpeed',this.speed+speed )
+
     },
   }
 };

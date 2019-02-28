@@ -1,34 +1,47 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">{{titleHome}}</router-link>|
-      <router-link to="/timer">{{titleTimer}}</router-link>|
-      <router-link to="/jumper">{{titleJumper}}</router-link>|
-      <router-link to="/faq">{{titleFaq}}</router-link>|
-      <router-link to="/contact">{{titleContact}}</router-link>
+      <router-link to="/">{{copy.menu ? copy.menu.home : ''}}</router-link>|
+      <router-link to="/timer">{{copy.menu ? copy.menu.timer: ''}}</router-link>|
+      <router-link to="/jumper">{{copy.menu ? copy.menu.jumper: ''}}</router-link>|
+      <router-link to="/faq">{{copy.menu ?copy.menu.faq: ''}}</router-link>|
+      <router-link to="/contact">{{copy.menu ?copy.menu.contact: ''}}</router-link>
     </div>
     <transition name="router-anim" enter-active-class="animated bounceInLeft">
           <router-view/>
     </transition>
-    <div>
-      Settings section
-
+    <div class="settings">
+      <h2>Settings:</h2>
+      <div>Language: <select v-on:change="setLanguage">
+        <option v-for="lang in availableLanguages" :value="lang" v-bind:key="lang">{{lang}}</option>
+      </select>
+      </div>
+      <div>Theme: {{'default'}}</div>
+      <div>Bind speed settings: {{'false'}}</div>
     </div>
   </div>
 </template>
 <script>
-import Copy from "./assets/copy";
+import {mapState} from 'vuex';
 
 export default {
   name: "appView",
   data() {
     return {
-      titleHome: Copy.menu.home,
-      titleTimer: Copy.menu.timer,
-      titleJumper: Copy.menu.jumper,
-      titleFaq: Copy.menu.faq,
-      titleContact: Copy.menu.contact
+      
     };
+  },
+  computed: {
+      ...mapState([
+      'language',
+      'availableLanguages',
+      'copy'
+    ]),
+  },
+  methods:{
+    setLanguage(e) {
+      this.$store.dispatch('setLanguage', e.target.value)
+    },
   }
 };
 </script>
@@ -107,6 +120,18 @@ textarea {
     &.centered{
       text-align:center;
     }
+}
+.settings{
+  h2{
+    margin:0;
+  }
+  position:absolute;
+  top:50px;
+  right:0;
+  text-align:left;
+  max-width:200px;
+  padding:5px;
+  background: #d5d5d5;
 }
 </style>
 
