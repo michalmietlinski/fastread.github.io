@@ -2,8 +2,8 @@
  <div>
    <ul class="faq-css">
      <li v-for="(item, index) in copy.faq" v-bind:key="index">
-      <h3 v-on:click="open(index)">{{item.question}}<span class="opened">{{item.opened ? '+' : '-'}}</span></h3>
-      <span v-show="item.opened">{{item.answear}}</span>
+      <h3 v-on:click="open(index)">{{item.question}}<span class="opened">{{(itemopened[index]) ? '+' : '-'}}</span></h3>
+      <span v-show="(itemopened[index])">{{item.answear}}</span>
       <hr>
      </li>
    </ul>
@@ -16,7 +16,7 @@ import {mapState} from 'vuex';
 export default {
   name: 'Main',
   data: () => ({
-    abc: 'an',
+    itemopened: [],
     // copy: Copy.faq.map((el)=>{
     //   return Object.assign(el, {opened:false})
     // }),
@@ -29,11 +29,12 @@ export default {
   },
   methods: {
     open: function(index)   {
-        if(this.copy[index].opened !== true){
-          this.copy[index].opened=true;
+        if(this.itemopened[index] !== true){
+          this.itemopened[index]=true;
         }else{
-          this.copy[index].opened=false;
+          this.itemopened[index]=false;
         }
+        this.$forceUpdate();
     }
   }
 };
