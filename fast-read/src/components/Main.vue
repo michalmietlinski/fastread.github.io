@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div class="introduction">
+      <h2>{{copy.section ? copy.section.main.header : ''}}</h2>
+      <p>{{copy.section ? copy.section.main.describtion : ''}}</p>
+    </div>
     <div class="inputtext">
     <textarea v-on:change="restart();" v-model="texttoread"></textarea>
     </div>

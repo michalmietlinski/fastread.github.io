@@ -7,9 +7,11 @@
       <router-link to="/faq">{{copy.menu ?copy.menu.faq: ''}}</router-link>|
       <router-link to="/contact">{{copy.menu ?copy.menu.contact: ''}}</router-link>
     </div>
+    <div class="app-wrapper">
     <transition name="router-anim" enter-active-class="animated bounceInLeft">
           <router-view/>
     </transition>
+    </div>
     <div class="settings">
       <h2>Settings:</h2>
       <div>Language: <select v-on:change="setLanguage">
@@ -133,5 +135,14 @@ textarea {
   padding:5px;
   background: #d5d5d5;
 }
+body,html {
+  margin:0;
+  padding: 0;
+}
+.app-wrapper{
+  max-width:800px;
+  margin:0 auto;
+}
+
 </style>
 

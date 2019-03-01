@@ -1,18 +1,25 @@
 <template>
   <div>
-    <div class="inputtext">
-      <textarea v-if="!watchplaying" v-model="texttoread2"></textarea>
+    <div class="introduction">
+      <h2>{{copy.section ? copy.section.counter.header : ''}}</h2>
+      <p>{{copy.section ? copy.section.counter.describtion : ''}}</p>
     </div>
-    <div class="resulttext" v-if="watchplaying">{{texttoread2}}</div>
+    
     <div class="controls">
-      <button v-on:click="stopWatch()">{{copy.menu  ? copy.controls.stop : ''}}</button>
-      <button v-on:click="startWatch()">{{copy.menu  ? copy.controls.start : ''}}</button>
+      <button v-on:click="stopWatch()" v-if="watchplaying">{{copy.menu  ? copy.controls.stop : ''}}</button>
+      <button v-on:click="startWatch()" v-if="!watchplaying">{{copy.menu  ? copy.controls.start : ''}}</button>
       <button v-on:click="resetWatch()">{{copy.menu  ? copy.controls.reset : ''}}</button>
     </div>
     <div class="results">
       <div>{{watchtime}}</div>
       <div>{{watchresult}}</div>
     </div>
+    <div class="inputtext">
+      <h3>{{copy.section ? copy.section.counter.inputtextdesc : ''}}</h3>
+      <textarea v-if="!watchplaying" v-model="texttoread2"></textarea>
+    </div>
+    <div class="resulttext" v-if="watchplaying">{{texttoread2}}</div>
+
     <hr>
   </div>
 </template>
@@ -85,3 +92,8 @@ export default {
 </script>
 
 <!-- ELEMENTS MOVED TO APP -->
+<style>
+.timer textarea{
+  width: 100%;
+}
+</style>
