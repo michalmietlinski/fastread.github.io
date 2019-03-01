@@ -12,6 +12,10 @@ const copy = {
         header: 'Check your reading speed',
         describtion: 'Just input the text, click on start, and as soon as you are done with reading, click it again. You will see your results and progress from previous tests.',
         inputtextdesc: 'Paste your chosen text here:',
+        timeOfReading: 'Time reading',
+        wordsPerMinute: 'Words per minute',
+        numberOfWords: 'Words in text',
+        latest: 'Latest',
       },
       jumper: {
         header: 'Train your eyes',
