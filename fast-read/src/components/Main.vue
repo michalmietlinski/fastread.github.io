@@ -27,18 +27,29 @@
         <button v-on:click="start()">{{copy.menu  ? copy.controls.start: ''}}</button>
         <button v-on:click="restart()">{{copy.menu  ? copy.controls.restart: ''}}</button>
         <button v-on:click="rewind()">{{copy.menu  ? copy.controls.rewind: ''}}</button>
-        
+                <button v-on:click="download()">Download</button>
+
       </div>
     </div>
     <div class="resulttext centered">
       <h1 v-for="line in readtext.split('$#$')" v-bind:key="line">{{line}}</h1>
     </div>
     <hr>
+     <ul>
+         <li v-for="(item, index) in availableArticles" v-bind:key="index">
+           {{item.title}}
+           {{item.pubDate}}
+         </li>
+         </ul>
+    {{this.availableArticles}}
+    <hr>
   </div>
 </template>
 
 <script>
 import {mapState} from 'vuex';
+import RSSParser from 'rss-parser' ;
+
 export default {
   name: "Main",
   data: () => ({
@@ -49,7 +60,8 @@ export default {
     wordcount: 0,
     splitted: [],
     currentplay: "",
-    playing: false
+    playing: false,
+    availableArticles: []
   }),
   computed: {
       ...mapState([
@@ -137,6 +149,18 @@ export default {
       this.$store.dispatch('setSpeed',this.speed+speed )
 
     },
+    download() {
+      let parser = new RSSParser();
+      const CORS_PROXY = "https://cors-anywhere.herokuapp.com/"
+
+        parser.parseURL(CORS_PROXY + 'https://www.reddit.com/.rss', (err, feed) => {
+          console.log(feed.title);
+          feed.items.forEach((entry) => {
+            console.log(entry)
+            this.availableArticles.push(entry)
+          })
+        })
+    }
   }
 };
 </script>
