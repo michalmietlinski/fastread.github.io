@@ -90,7 +90,7 @@ const copy = {
         answear: 'Odpowiedź 1',
       },
       {
-        question: 'Pytsnie 2',
+        question: 'Pytanie 2',
         answear: 'Odpowiedź 2',
       },
     ],
