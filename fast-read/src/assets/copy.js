@@ -86,7 +86,7 @@ const copy = {
     },
     faq: [
       {
-        question: 'Pytsnie 1',
+        question: 'Pytanie 1',
         answear: 'Odpowiedź 1',
       },
       {
