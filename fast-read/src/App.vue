@@ -14,11 +14,14 @@
     </div>
     <div class="settings">
       <h2>Settings:</h2>
-      <div>Language: <select v-on:change="setLanguage">
+      <div>Language: <select v-on:change="setLanguage" v-model="language">
         <option v-for="lang in availableLanguages" :value="lang" v-bind:key="lang">{{lang}}</option>
       </select>
       </div>
-      <div>Theme: {{'default'}}</div>
+      <div>Theme: <select v-on:change="setTheme" v-model="theme">
+        <option v-for="oneTheme in availableThemes" :value="oneTheme" v-bind:key="oneTheme">{{oneTheme}}</option>
+      </select>
+      </div>
       <div>Bind speed settings: {{'false'}}</div>
     </div>
   </div>
@@ -37,14 +40,32 @@ export default {
       ...mapState([
       'language',
       'availableLanguages',
-      'copy'
+      'copy',
+      'styles',
+      'availableThemes',
+      'theme',
     ]),
   },
   methods:{
     setLanguage(e) {
       this.$store.dispatch('setLanguage', e.target.value)
     },
-  }
+    setTheme(e) {
+      this.$store.dispatch('setTheme', e.target.value)
+    },
+  },
+   watch: {
+    styles: function(newVal) {
+      this.$el.style.setProperty('--main_active_color', this.styles.mainColor);
+
+    }
+  },
+  mounted() {
+    window.addEventListener('load', () => {
+         // run after everything is in-place
+         this.$el.style.setProperty('--main_active_color', this.styles.mainColor);
+    })
+  },
 };
 </script>
 <style>
@@ -66,12 +87,12 @@ export default {
     font-weight: bold;
     color: #2c3e50;
     &.router-link-exact-active {
-      color: #42b983;
+      color: var(--main_active_color, #42b983) ;
     }
   }
 }
 button {
-  background: #489e54;
+  background: var(--main_active_color,#489e54);
   border: none;
   margin: 0 3px;
   padding: 3px 10px;
@@ -93,7 +114,7 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: var(--main_active_color,#42b983);
 }
 textarea {
   min-width: 500px;

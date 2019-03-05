@@ -57,7 +57,7 @@ const copy = {
     },
     section: {
       counter: {
-        header: 'Sprawdź swoje obecną predkość / tepo czytania', // DECIDE 
+        header: 'Sprawdź swoje obecną predkość / tepo czytania',
         describtion: 'Just input the text, click on start, and as soon as you are done with reading, click it again. You will see your results and progress from previous tests.',
         inputtextdesc: 'Wklej swój teks tutaj:',
         timeOfReading: 'Czas czytania',

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import Copy from './assets/copy';
+import Styles from './assets/styles';
 
 Vue.use(Vuex);
 
@@ -12,7 +13,9 @@ export default new Vuex.Store({
     language: sessionStorage.getItem('language') || 'English',
     availableLanguages: ['English', 'Polski'],
     copy: Copy[sessionStorage.getItem('language') || 'English'],
-
+    availableThemes: ['light', 'dark'],
+    theme: sessionStorage.getItem('theme') || 'light',
+    styles: sessionStorage.getItem('theme') ? Styles[sessionStorage.getItem('theme')] : Styles.light,
   },
   mutations: {
     SET_SPEED: (state, speed) => {
@@ -28,6 +31,11 @@ export default new Vuex.Store({
       state.language = language;
       state.copy = Copy[language];
     },
+    SET_THEME: (state, theme) => {
+      state.theme = theme;
+      state.styles = Styles[theme];
+    },
+
   },
   actions: {
     setSpeed: ({ commit, state }, newValue) => {
@@ -49,6 +57,13 @@ export default new Vuex.Store({
       if (state.availableLanguages.includes(newValue)) {
         sessionStorage.setItem('language', newValue);
         commit('SET_LANGUAGE', newValue);
+      }
+      return state.language;
+    },
+    setTheme: ({ commit, state }, newValue) => {
+      if (state.availableThemes.includes(newValue)) {
+        sessionStorage.setItem('theme', newValue);
+        commit('SET_THEME', newValue);
       }
       return state.language;
     },
