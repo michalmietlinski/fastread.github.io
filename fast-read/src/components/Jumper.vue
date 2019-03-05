@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="introduction">
-      <h2>{{copy.section ? copy.section.main.header : ''}}</h2>
-      <p>{{copy.section ? copy.section.main.describtion : ''}}</p>
+      <h2>{{copy.section ? copy.section.jumper.header : ''}}</h2>
+      <p>{{copy.section ? copy.section.jumper.describtion : ''}}</p>
     </div>
   <div class="container">
     <div class="topleft">{{spot0}}</div>
