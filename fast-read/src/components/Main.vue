@@ -56,7 +56,7 @@ export default {
     // Responsible for showing text
     texttoread: "",
     partialtext: "",
-    readtext: "Text to display",
+    readtext: "Text to display", // HARD CODED - FIND FIX AJ
     wordcount: 0,
     splitted: [],
     currentplay: "",

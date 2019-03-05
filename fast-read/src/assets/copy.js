@@ -47,7 +47,54 @@ const copy = {
       },
     ],
   },
-  Polski: {},
+  Polski: {
+    menu: {
+      faq: 'FAQ',
+      contact: 'Kontakt',
+      jumper: 'Skoczek !',
+      timer: 'Czas',
+      home: 'Home',
+    },
+    section: {
+      counter: {
+        header: 'Sprawdź swoje obecną predkość / tepo czytania', // DECIDE 
+        describtion: 'Just input the text, click on start, and as soon as you are done with reading, click it again. You will see your results and progress from previous tests.',
+        inputtextdesc: 'Wklej swój teks tutaj:',
+        timeOfReading: 'Czas czytania',
+        wordsPerMinute: 'Slów na minute',
+        numberOfWords: 'Ilość slów w tekście',
+        latest: 'Latest',
+      },
+      jumper: {
+        header: 'Tranuj swój wzrok',
+        describtion: 'zabawka',
+      },
+      main: {
+        header: 'Czytaj szybciej dzięki pomocy aplikacji',
+        describtion: 'zabawka',
+      },
+    },
+    controls: {
+      speed: 'Prędkość',
+      words: 'Słowa',
+      rows: 'Rzędy',
+      stop: 'Stop',
+      start: 'Start',
+      restart: 'Restart',
+      rewind: 'Przewijanie',
+      reset: 'Reset',
+    },
+    faq: [
+      {
+        question: 'Pytanie 1',
+        answear: 'Odpowiedź 1',
+      },
+      {
+        question: 'Pytanie 2',
+        answear: 'Odpowiedź 2',
+      },
+    ],
+  },
 };
 
 export default copy;
