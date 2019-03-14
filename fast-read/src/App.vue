@@ -12,20 +12,18 @@
           <router-view/>
     </transition>
     </div>
-     
-     
      <div class="settings-wraper" v-bind:class="{ activeSettings: showSettings }">
         <div class="img1" v-on:click="showSettings = !showSettings">
           <img src="../images/a1.png" >
         </div>
         <div class="settings" >
             <h2>Settings:</h2>
-            <div>Language: <select v-on:change="setLanguage" v-model="language">
-              <option v-for="lang in availableLanguages" :value="lang" v-bind:key="lang">{{lang}}</option>
+            <div>Language: <select v-on:change="setLanguage">
+              <option v-for="lang in availableLanguages"  :selected="lang == language" :value="lang" v-bind:key="lang">{{lang}}</option>
             </select>
           </div>
-          <div>Theme: <select v-on:change="setTheme" v-model="theme">
-        <option v-for="oneTheme in availableThemes" :value="oneTheme" v-bind:key="oneTheme">{{oneTheme}}</option>
+          <div>Theme: <select v-on:change="setTheme">
+        <option v-for="oneTheme in availableThemes" :value="oneTheme" :selected="oneTheme == theme" v-bind:key="oneTheme">{{oneTheme}}</option>
       </select>
       </div>
       <div>Bind speed settings: {{'false'}}</div>
@@ -110,16 +108,16 @@ button {
   padding: 3px 10px;
   color: rgb(241, 241, 241);
   &:hover {
-    background: #218a5b;
+      background: #218a5b;
+    }
   }
-}
-// CONTACT + COUNTER + MAIN - THE SAME STYL FOR CSS
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
+  // CONTACT + COUNTER + MAIN - THE SAME STYL FOR CSS
+  h3 {
+    margin: 40px 0 0;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
 }
 li {
   display: inline-block;
