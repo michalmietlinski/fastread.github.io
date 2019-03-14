@@ -12,18 +12,28 @@
           <router-view/>
     </transition>
     </div>
-    <div class="settings">
-      <h2>Settings:</h2>
-      <div>Language: <select v-on:change="setLanguage" >
-        <option v-for="lang in availableLanguages" :selected="lang == language" :value="lang" v-bind:key="lang">{{lang}}</option>
-      </select>
-      </div>
-      <div>Theme: <select v-on:change="setTheme" >
-        <option v-for="oneTheme in availableThemes" :selected="oneTheme == theme" :value="oneTheme" v-bind:key="oneTheme">{{oneTheme}}</option>
+     <div class="settings-wraper" v-bind:class="{ activeSettings: showSettings }">
+        <div class="img1" v-on:click="showSettings = !showSettings">
+          <img src="../images/a1.png" >
+        </div>
+        <div class="settings" >
+            <h2>Settings:</h2>
+            <div>Language: <select v-on:change="setLanguage">
+              <option v-for="lang in availableLanguages"  :selected="lang == language" :value="lang" v-bind:key="lang">{{lang}}</option>
+            </select>
+          </div>
+          <div>Theme: <select v-on:change="setTheme">
+        <option v-for="oneTheme in availableThemes" :value="oneTheme" :selected="oneTheme == theme" v-bind:key="oneTheme">{{oneTheme}}</option>
       </select>
       </div>
       <div>Bind speed settings: {{'false'}}</div>
+    
+      </div>
+      
     </div>
+
+
+    
   </div>
 </template>
 <script>
@@ -33,7 +43,7 @@ export default {
   name: "appView",
   data() {
     return {
-      
+      showSettings: false
     };
   },
   computed: {
@@ -144,18 +154,39 @@ textarea {
       text-align:center;
     }
 }
-.settings{
-  h2{
-    margin:0;
-  }
+
+.settings-wraper {
   position:absolute;
   top:50px;
   right:0;
   text-align:left;
-  max-width:200px;
-  padding:5px;
-  background: #d5d5d5;
+  &.activeSettings{
+    .settings{
+      display: block;
+    }
+  } 
+
+  .settings{
+    h2{
+      margin:0;
+    }
+    display: none;
+    padding:5px;
+    background: #d5d5d5;
+    float:left;
+    max-width:200px;
+  }
+  .img1{
+    
+    float:left;
+    max-width:50px;
+    img{
+      width: 100%;
+      
+    }
+  }
 }
+
 body,html {
   margin:0;
   padding: 0;
@@ -164,6 +195,7 @@ body,html {
   max-width:800px;
   margin:0 auto;
 }
+
 
 </style>
 
