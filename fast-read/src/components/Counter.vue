@@ -4,18 +4,18 @@
       <h2>{{copy.section ? copy.section.counter.header : ''}}</h2>
       <p>{{copy.section ? copy.section.counter.describtion : ''}}</p>
     </div>
-    
+  
+    <div class="inputtext">
+      <h3>{{copy.section ? copy.section.counter.inputtextdesc : ''}}</h3>
+      <textarea class="textareaMain" v-if="!watchplaying" v-model="texttoread2"></textarea>
+    </div>
+    <div class="resulttext" v-if="watchplaying">{{texttoread2}}</div>
+
     <div class="controls">
       <button v-on:click="stopWatch()" v-if="watchplaying">{{copy.menu  ? copy.controls.stop : ''}}</button>
       <button v-on:click="startWatch()" v-if="!watchplaying">{{copy.menu  ? copy.controls.start : ''}}</button>
       <button v-on:click="resetWatch()">{{copy.menu  ? copy.controls.reset : ''}}</button>
     </div>
-    <div class="inputtext">
-      <h3>{{copy.section ? copy.section.counter.inputtextdesc : ''}}</h3>
-      <textarea v-if="!watchplaying" v-model="texttoread2"></textarea>
-    </div>
-    <div class="resulttext" v-if="watchplaying">{{texttoread2}}</div>
-
     <hr>
     <div class="results">
     <h2></h2>
@@ -102,16 +102,12 @@ export default {
 
 <!-- ELEMENTS MOVED TO APP -->
 <style lang="scss">
-.timer textarea{
-  width: 100%;
-}
 .timer ul li{
   span {
     min-width: 150px;
     font-weight: 700;
   }
   width:33%;
-  text-align: left;
   padding:0;
   margin:0;
 }

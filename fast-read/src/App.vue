@@ -126,35 +126,38 @@ li {
 a {
   color: var(--main_active_color,#42b983);
 }
-textarea {
-  min-width: 500px;
-  min-height: 300px;
+
+.textareaMain {
+  width: 800px;
+  min-height: 250px;
 }
 .container {
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: 800px;
   height: 600px;
   position: relative;
-  background: #302e2e;
+  background: #302e2e;  
   color: #ff1919;
   text-transform: uppercase;
 }
+.center{
+  text-align: center;
+}
 .controls{
   text-align: left;
+  width: 800px;
+  left: 100px;
 }
 .results{
     text-align: left;
 }
-.inputtext{
-      text-align: left;
-}
+
 .resulttext{
     text-align: left;
     &.centered{
       text-align:center;
     }
 }
-
 .settings-wraper {
   position:absolute;
   top:50px;
@@ -192,10 +195,9 @@ body,html {
   padding: 0;
 }
 .app-wrapper{
-  max-width:800px;
-  margin:0 auto;
+  max-width: 100vw;
+  padding:0 auto;
 }
-
 
 </style>
 

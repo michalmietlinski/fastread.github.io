@@ -9,7 +9,7 @@
     <div class="topright">{{spot1}}</div>
     <div class="bottomleft">{{spot2}}</div>
     <div class="bottomright">{{spot3}}</div>
-    <textarea v-model="texttoread3"></textarea>
+    <textarea class="textareaJumper" v-model="texttoread3"></textarea>
     <div class="controller">
       <button v-on:click="startjump()">{{copy.menu  ? copy.controls.start : ''}}</button>
       <button v-on:click="stopjump()">{{copy.menu  ? copy.controls.stop : ''}}</button>
@@ -87,19 +87,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-textarea {
-  min-width: 500px;
-  min-height: 300px;
-}
-.container {
-  display: block;
-  width: 100%;
-  height: 600px;
-  position: relative;
-  background: #302e2e;
-  color: #ff1919;
-  text-transform: uppercase;
-}
+
 .topleft {
   position: absolute;
   left: 0;
@@ -123,6 +111,10 @@ textarea {
   right: 0;
   bottom: 0;
   padding: 20px;
+}
+.textareaJumper {
+  min-width: 500px;
+  min-height: 300px;
 }
 .container textarea {
   position: absolute;
