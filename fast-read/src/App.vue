@@ -139,6 +139,7 @@ a {
 .center{
   text-align: center;
 }
+
 .introduction { 
   display: inline-block;
   max-width: 800px;
@@ -148,9 +149,16 @@ a {
   width: 800px;
   min-height: 250px;
 }
+.controls{
+  text-align: left;
+  width: 800px;
+  left: 100px;
+
+}
 .results{
     text-align: left;
 }
+
 .resulttext{
     text-align: left;
     &.centered{
