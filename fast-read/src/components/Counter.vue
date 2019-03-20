@@ -100,7 +100,6 @@ export default {
 };
 </script>
 
-<!-- ELEMENTS MOVED TO APP -->
 <style lang="scss">
 .timer ul li{
   span {
@@ -111,6 +110,5 @@ export default {
   padding:0;
   margin:0;
 }
-//need that
 
 </style>

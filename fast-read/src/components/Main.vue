@@ -4,33 +4,46 @@
       <h2>{{copy.section ? copy.section.main.header : ''}}</h2>
       <p>{{copy.section ? copy.section.main.describtion : ''}}</p>
     </div>
+
     <div class="inputtext">
-    <textarea v-on:change="restart();" v-model="texttoread"></textarea>
+      <textarea class="textareaMain" v-on:change="restart();" v-model="texttoread"></textarea>
     </div>
+
     <div class="controls">
-      <div>
-        {{copy.menu ? copy.controls.speed : ''}}
-        <input type="number" v-on:change="updateSpeed" :value="speed">
-        <span v-on:click="addSpeed(50)">+50</span>
-      <span v-on:click="addSpeed(100)">+100</span>
+      <div class="col_1">
+        <div class="row_1">
+          {{copy.menu ? copy.controls.speed : ''}}
+        </div>
+        <div class="row_2">
+          {{copy.menu  ? copy.controls.words : ''}}
+        </div>
+        <div class="row_3">
+          {{copy.menu  ? copy.controls.rows : ''}}
+        </div>
       </div>
-      <div>
-        {{copy.menu  ? copy.controls.words : ''}}
-        <input type="number" v-on:change="updateWordperline" :value="wordperline">
-      </div>
-      <div>
-        {{copy.menu  ? copy.controls.rows : ''}}
-        <input type="number" v-on:change="updateNumberofrows" :value="numberofrows">
-      </div>
+
+      <div class="col_2">
+        <div class="row_1">
+         <input type="number" v-on:change="updateSpeed" :value="speed">
+           <span v-on:click="addSpeed(50)"> +50 </span>
+           <span v-on:click="addSpeed(100)"> +100</span>
+        </div>
+        <div class="row_2">
+          <input type="number" v-on:change="updateWordperline" :value="wordperline">
+        </div>
+        <div class="row_3">
+          <input type="number" v-on:change="updateNumberofrows" :value="numberofrows">
+        </div>
+      </div>            
+    </div>  
       <div>
         <button v-on:click="stop()">{{copy.menu  ? copy.controls.stop : ''}}</button>
         <button v-on:click="start()">{{copy.menu  ? copy.controls.start: ''}}</button>
         <button v-on:click="restart()">{{copy.menu  ? copy.controls.restart: ''}}</button>
         <button v-on:click="rewind()">{{copy.menu  ? copy.controls.rewind: ''}}</button>
-                <button v-on:click="download()">Download</button>
-
+        <button v-on:click="download()">Download</button>
       </div>
-    </div>
+   
     <div class="resulttext centered">
       <h1 v-for="line in readtext.split('$#$')" v-bind:key="line">{{line}}</h1>
     </div>
@@ -89,7 +102,7 @@ export default {
           if (this.numberofrows > 1) {
             for (let i = 1; i < parseInt(this.numberofrows, 10); i++) {
               if (this.splitted[this.wordcount + i]) {
-                this.readtext = this.readtext.concat("$#$");
+                this.readtinputteext = this.readtext.concat("$#$");
                 this.readtext = this.readtext.concat(
                   this.splitted[this.wordcount + i]
                 );
@@ -164,5 +177,20 @@ export default {
   }
 };
 </script>
-
-<!-- ELEMENTS MOVED TO APP -->
+<style lang="scss">
+.controls {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: left;
+    left: 100px;
+}
+.col_1, .col_2 {
+  display: inline-block;
+}
+.row_1, .row_2, .row_3 {
+  display: block;
+  margin: 5px;
+  padding: 5px;
+}
+</style>

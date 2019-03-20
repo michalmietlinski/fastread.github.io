@@ -127,6 +127,5 @@ export default {
   left: 50%;
   transform: translate(-50%);
 }
-//need that
 
 </style>

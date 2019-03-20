@@ -113,7 +113,7 @@ button {
   }
   // CONTACT + COUNTER + MAIN - THE SAME STYL FOR CSS
   h3 {
-    margin: 40px 0 0;
+    margin: 0 0 10px 0;
   }
   ul {
     list-style-type: none;
@@ -127,10 +127,6 @@ a {
   color: var(--main_active_color,#42b983);
 }
 
-.textareaMain {
-  width: 800px;
-  min-height: 250px;
-}
 .container {
   display: inline-block;
   width: 800px;
@@ -143,15 +139,18 @@ a {
 .center{
   text-align: center;
 }
-.controls{
-  text-align: left;
+.introduction { 
+  display: inline-block;
+  max-width: 800px;
+  text-align: center;
+}
+.textareaMain {
   width: 800px;
-  left: 100px;
+  min-height: 250px;
 }
 .results{
     text-align: left;
 }
-
 .resulttext{
     text-align: left;
     &.centered{
@@ -168,7 +167,6 @@ a {
       display: block;
     }
   } 
-
   .settings{
     h2{
       margin:0;
@@ -180,7 +178,6 @@ a {
     max-width:200px;
   }
   .img1{
-    
     float:left;
     max-width:50px;
     img{
@@ -198,7 +195,6 @@ body,html {
   max-width: 100vw;
   padding:0 auto;
 }
-//need that
 
 </style>
 
