@@ -4,7 +4,7 @@
       <h2>{{copy.section ? copy.section.jumper.header : ''}}</h2>
       <p>{{copy.section ? copy.section.jumper.describtion : ''}}</p>
     </div>
-  <div class="container">
+  <div class="container-jumper">
     <div class="topleft">{{spot0}}</div>
     <div class="topright">{{spot1}}</div>
     <div class="bottomleft">{{spot2}}</div>
@@ -113,19 +113,24 @@ export default {
   padding: 20px;
 }
 .textareaJumper {
-  min-width: 500px;
+  width:90%;
+  max-width: 500px;
   min-height: 300px;
 }
-.container textarea {
+.container-jumper textarea {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
-.container .controller {
+.container-jumper .controller {
+  padding-top:10px;
   position: absolute;
   left: 50%;
   transform: translate(-50%);
+  button {
+    margin-bottom:10px;
+  }
 }
 
 

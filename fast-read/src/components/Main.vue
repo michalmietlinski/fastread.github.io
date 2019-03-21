@@ -10,28 +10,31 @@
     </div>
 
     <div class="controls">
-      <div class="col_1">
-        <div class="row_1">
+      <div class="column">
+        <div class="row">
           {{copy.menu ? copy.controls.speed : ''}}
         </div>
-        <div class="row_2">
+        <div class="row">
           {{copy.menu  ? copy.controls.words : ''}}
         </div>
-        <div class="row_3">
+        <div class="row">
           {{copy.menu  ? copy.controls.rows : ''}}
         </div>
       </div>
 
-      <div class="col_2">
-        <div class="row_1">
+      <div class="column">
+        <div class="row">
+          <!-- <div class="text"> {{copy.menu ? copy.controls.speed : ''}}</div> -->
          <input type="number" v-on:change="updateSpeed" :value="speed">
            <span v-on:click="addSpeed(50)"> +50 </span>
            <span v-on:click="addSpeed(100)"> +100</span>
         </div>
-        <div class="row_2">
+        <div class="row">
+          <!-- <div class="text"> {{copy.menu ? copy.controls.words : ''}}</div> -->
           <input type="number" v-on:change="updateWordperline" :value="wordperline">
         </div>
-        <div class="row_3">
+        <div class="row">
+          <!-- <div class="text"> {{copy.menu ? copy.controls.rows : ''}}</div> -->
           <input type="number" v-on:change="updateNumberofrows" :value="numberofrows">
         </div>
       </div>            
@@ -159,7 +162,7 @@ export default {
       this.reading(this.restart);
     },
     addSpeed(speed){
-      this.$store.dispatch('setSpeed',this.speed+speed )
+      this.$store.dispatch('setSpeed',parseInt(this.speed, 10)+parseInt(speed,10) )
 
     },
     download() {
@@ -184,13 +187,50 @@ export default {
     line-height: 25px;
     text-align: left;
     left: 100px;
+    .column:first-of-type {
+      .row{
+        padding-left:10px;
+      }
+    }
+    .column{
+      min-width: 110px;
+      float: left;
+    }
+    .row{
+      border-bottom: 2px solid;
+      margin-bottom: 10px;
+      position:relative;
+      input{
+          margin: 0;
+          padding: 0 5px;
+          border: 0;
+          background: var(--main_active_color, #489e54);
+          /* line-height: 0; */
+          height: 23px;
+      }
+      span{
+        position:absolute;
+        right:0;
+        transform: translateX(100%);
+        padding: 0 10px;
+        background: var(--main_active_color, #489e54);
+        color: #fff;
+        border-radius: 0 10px;
+      }
+      span:nth-of-type(1){
+        right:-10px;
+      }
+      span:nth-of-type(2){
+        right:-60px;
+      }
+    }
 }
-.col_1, .col_2 {
-  display: inline-block;
-}
-.row_1, .row_2, .row_3 {
-  display: block;
-  margin: 5px;
-  padding: 5px;
-}
+// .col_1, .col_2 {
+//   display: inline-block;
+// }
+// .row_1, .row_2, .row_3 {
+//   display: block;
+//   margin: 5px;
+//   padding: 5px;
+// }
 </style>

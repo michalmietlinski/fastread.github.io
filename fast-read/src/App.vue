@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div class="leftSide">
     <div id="nav">
       <router-link to="/">{{copy.menu ? copy.menu.home : ''}}</router-link>|
       <router-link to="/timer">{{copy.menu ? copy.menu.timer: ''}}</router-link>|
@@ -7,7 +8,8 @@
       <router-link to="/faq">{{copy.menu ?copy.menu.faq: ''}}</router-link>|
       <router-link to="/contact">{{copy.menu ?copy.menu.contact: ''}}</router-link>
     </div>
-    <div class="app-wrapper">
+    </div>
+    <div class="rightSide app-wrapper">
     <transition name="router-anim" enter-active-class="animated bounceInLeft">
           <router-view/>
     </transition>
@@ -90,14 +92,24 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  box-sizing: border-box;
+}
+#app * {
+  box-sizing: border-box;
 }
 #nav {
   padding: 30px;
+  float: left;
+    background: var(--main_active_color,#42b983);
+    border-radius: 0 0 30px 0;
   a {
     font-weight: bold;
-    color: #2c3e50;
+    padding:0 10px;
+    color: #eeeeee;
     &.router-link-exact-active {
-      color: var(--main_active_color, #42b983) ;
+      font-weight:700;
+      text-decoration: underline;
+      // color: var(--main_active_color, #42b983) ;
     }
   }
 }
@@ -136,6 +148,15 @@ a {
   color: #ff1919;
   text-transform: uppercase;
 }
+.container-jumper {
+  display: inline-block;
+  width:100%;
+  height: 600px;
+  position: relative;
+  background: #302e2e;  
+  color: #ff1919;
+  text-transform: uppercase;
+}
 .center{
   text-align: center;
 }
@@ -146,12 +167,15 @@ a {
   text-align: center;
 }
 .textareaMain {
-  width: 800px;
+  width:100%;
+  max-width: 800px;
   min-height: 250px;
+  padding:0;
 }
 .controls{
   text-align: left;
-  width: 800px;
+  width:100%;
+  max-width: 800px;
   left: 100px;
 
 }
@@ -200,7 +224,9 @@ body,html {
   padding: 0;
 }
 .app-wrapper{
-  max-width: 100vw;
+  width:100%;
+  float:left;
+  padding-top:5vw;
   padding:0 auto;
 }
 
