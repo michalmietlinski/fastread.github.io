@@ -2,6 +2,7 @@
   <div>
     <div class="introduction">
       <h2>{{copy.section ? copy.section.main.header : ''}}</h2>
+            <img class="main-Img" src="../assets/a2.png" >
       <p>{{copy.section ? copy.section.main.describtion : ''}}</p>
     </div>
 
@@ -205,7 +206,7 @@ export default {
           padding: 0 5px;
           border: 0;
           background: var(--main_active_color, #489e54);
-          /* line-height: 0; */
+          color: #fff;
           height: 23px;
       }
       span{
@@ -225,12 +226,15 @@ export default {
       }
     }
 }
-// .col_1, .col_2 {
-//   display: inline-block;
-// }
-// .row_1, .row_2, .row_3 {
-//   display: block;
-//   margin: 5px;
-//   padding: 5px;
-// }
+
+.main-Img {
+   position: relative;
+   left: 25px;
+   top: -20px;
+   float: left;
+   max-width: 80px;
+   width: 35%;
+   transform: rotate(45deg);
+}
+
 </style>
