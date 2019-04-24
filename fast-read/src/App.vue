@@ -1,28 +1,32 @@
 <template>
   <div id="app">
-    <div class="leftSide">
+    <div class="column-wrapper">
       <div id="nav">
         <ul>
+        <li>
           <router-link to="/">{{copy.menu ? copy.menu.home : ''}}</router-link>
-        </ul>
-        <ul>
+        </li>
+        <li>
           <router-link to="/timer">{{copy.menu ? copy.menu.timer: ''}}</router-link>
-        </ul>
-        <ul>
+        </li>
+        <li>
           <router-link to="/jumper">{{copy.menu ? copy.menu.jumper: ''}}</router-link>
-        </ul>
-        <ul>
+        </li>
+        <li>
           <router-link to="/faq">{{copy.menu ?copy.menu.faq: ''}}</router-link>
-        </ul>
-        <ul>
+        </li>
+        <li>
           <router-link to="/contact">{{copy.menu ?copy.menu.contact: ''}}</router-link>
+        </li>
         </ul>
       </div>
-    </div>
+  
     <div class="app-wrapper">
       <transition name="router-anim" enter-active-class="animated bounceInLeft">
         <router-view/>
       </transition>
+    </div>
+    </div>
     </div>
     <!-- <div class="settings-wraper" v-bind:class="{ activeSettings: showSettings }">
       <div class="img1" v-on:click="showSettings = !showSettings">
@@ -53,9 +57,7 @@
           </select>
         </div> -->
         <!-- <div>Bind speed settings: {{'false'}}</div>    DURING WORK BREAKING FLOOW, FIX IT LATER -->
-      </div>
-    </div>
-  </div>
+      
 </template>
 <script>
 import { mapState } from "vuex";
@@ -109,22 +111,33 @@ export default {
   text-align: center;
   color: #2c3e50;
   box-sizing: border-box;
+      height: 100%;
+  display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
 }
 #app * {
   box-sizing: border-box;
 }
 #nav {
-  padding: 0,5%;
-  // max-width: ?;      - a html min width.
-  
-  position: absolute;
-  top: 0;
-  left: 0;
+  padding: 0.5%;
+  flex: 0 0 240px;
   z-index: 2;
   min-height: 100%;
   text-align: left;
   background: var(--main_active_color, #00c853);
-  // border-radius: 0 0 30px 0;
+  ul {
+  list-style-type: none;
+  padding: 0;
+  
+    li {
+      display: block;
+      margin: 0 10px;
+    }
+    }
   a {
     font-weight: bold;
     padding: 0 10px;
@@ -136,6 +149,14 @@ export default {
     }
   }
 }
+.column-wrapper{
+  flex: 1 1 auto;
+  display: flex;
+}
+.app-wrapper {
+      flex: 1 1;
+
+ }
 button {
   background: #69f0ae; //#000f80;
   border: none;
@@ -150,14 +171,7 @@ button {
 h3 {
   margin: 0 0 10px 0;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+
 a {
   color: var(--main_active_color, #42b983);
 }
@@ -286,14 +300,11 @@ a {
 
 body,
 html {
-  margin-left: 50px;
+  margin: 0;
   padding: 0;
+      height: 100%;
+
 }
-// .app-wrapper {
-//   width: auto;
-//   float: right;
-  // padding-top: 5vw;
-  // padding: 0 auto;
-// }
+
 </style>
 
