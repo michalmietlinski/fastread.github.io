@@ -2,37 +2,40 @@
   <div id="app">
     <div class="column-wrapper">
       <div id="nav">
+        <img class="mainImg" src="../images/a1.png">
         <ul>
-        <li>
-          <router-link to="/">{{copy.menu ? copy.menu.home : ''}}</router-link>
-        </li>
-        <li>
-          <router-link to="/timer">{{copy.menu ? copy.menu.timer: ''}}</router-link>
-        </li>
-        <li>
-          <router-link to="/jumper">{{copy.menu ? copy.menu.jumper: ''}}</router-link>
-        </li>
-        <li>
-          <router-link to="/faq">{{copy.menu ?copy.menu.faq: ''}}</router-link>
-        </li>
-        <li>
-          <router-link to="/contact">{{copy.menu ?copy.menu.contact: ''}}</router-link>
-        </li>
+          <li>
+            <router-link to="/">{{copy.menu ? copy.menu.home : ''}}</router-link>
+          </li>
+          <li>
+            <router-link to="/timer">{{copy.menu ? copy.menu.timer: ''}}</router-link>
+          </li>
+          <li>
+            <router-link to="/jumper">{{copy.menu ? copy.menu.jumper: ''}}</router-link>
+          </li>
+          <li>
+            <router-link to="/faq">{{copy.menu ?copy.menu.faq: ''}}</router-link>
+          </li>
+          <li>
+            <router-link to="/contact">{{copy.menu ?copy.menu.contact: ''}}</router-link>
+          </li>
         </ul>
       </div>
-  
-    <div class="app-wrapper">
-      <transition name="router-anim" enter-active-class="animated bounceInLeft">
-        <router-view/>
-      </transition>
+
+      <div class="app-wrapper">
+        <transition name="router-anim" enter-active-class="animated bounceInLeft">
+          <router-view/>
+        </transition>
+      </div>
     </div>
-    </div>
-    </div>
-    <!-- <div class="settings-wraper" v-bind:class="{ activeSettings: showSettings }">
+  </div>
+
+  <!-- OLD SETTINGS WRAPER -->
+  <!-- <div class="settings-wraper" v-bind:class="{ activeSettings: showSettings }">
       <div class="img1" v-on:click="showSettings = !showSettings">
-        <img src="../images/a1.png">
-      </div> -->
-      <!-- <div class="settings">
+  <img src="../images/a1.png">-->
+  <!-- </div>
+   <div class="settings">
         <h2>Settings:</h2>
         <div>
           Language:
@@ -55,9 +58,10 @@
               v-bind:key="oneTheme"
             >{{oneTheme}}</option>
           </select>
-        </div> -->
-        <!-- <div>Bind speed settings: {{'false'}}</div>    DURING WORK BREAKING FLOOW, FIX IT LATER -->
-      
+  </div>
+  <div>Bind speed settings: {{'false'}}</div>-->
+
+  <!-- DURING WORK BREAKING FLOOW, FIX IT LATER -->
 </template>
 <script>
 import { mapState } from "vuex";
@@ -111,37 +115,42 @@ export default {
   text-align: center;
   color: #2c3e50;
   box-sizing: border-box;
-      height: 100%;
+  height: 100%;
   display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: stretch;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
 }
 #app * {
   box-sizing: border-box;
 }
 #nav {
   padding: 0.5%;
-  flex: 0 0 240px;
+  flex: 0 0 24px;
   z-index: 2;
   min-height: 100%;
-  text-align: left;
+  // text-align: left;
+  text-align: center;
   background: var(--main_active_color, #00c853);
+
   ul {
-  list-style-type: none;
-  padding: 0;
-  
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+
     li {
       display: block;
-      margin: 0 10px;
+      margin: 0.5vw 1vw;
+      font-size: 1.5em;
     }
-    }
+  }
   a {
     font-weight: bold;
     padding: 0 10px;
-    color: #eeeeee;
+    color: #424242;
+    //  #eeeeee;
     &.router-link-exact-active {
       font-weight: 700;
       text-decoration: underline;
@@ -149,29 +158,44 @@ export default {
     }
   }
 }
-.column-wrapper{
+.mainImg {
+  max-width: 2vw;
+  // display: inline-block ;
+  // text-align: center;
+}
+.column-wrapper {
   flex: 1 1 auto;
   display: flex;
 }
 .app-wrapper {
-      flex: 1 1;
-
- }
+  flex: 1 1;
+  overflow-y: scroll;
+}
 button {
-  background: #69f0ae; //#000f80;
+  background: #00e676;
+  // #218a5b;
+  font-weight: bold;
+  font-size: 18px;
   border: none;
   margin: 0 3px;
   padding: 3px 10px;
-  color: rgb(241, 241, 241);
+  color: #424242;
+  // rgb(241, 241, 241);
   &:hover {
-    background: #218a5b;
+    background: #69f0ae;
   }
 }
 // CONTACT + COUNTER + MAIN - THE SAME STYL FOR CSS
+
 h3 {
   margin: 0 0 10px 0;
 }
-
+h2 {
+  font-size: 2em;
+}
+p {
+  font-size: 1em;
+}
 a {
   color: var(--main_active_color, #42b983);
 }
@@ -204,11 +228,11 @@ a {
   text-align: center;
 }
 .textareaMain {
-  max-width: 500px;
-  min-width: 450px;
-  min-height: 115px;
+  max-width: 800px;
+  min-width: 645px;
+  min-height: 215px;
   padding: 0;
-  margin-right: 3px;
+  margin-right: 0 3px 3px 3px;
   display: inline-block;
 }
 
@@ -261,11 +285,14 @@ a {
 }
 
 .resulttext {
-  text-align: left;
-  &.centered {
-    text-align: center;
-    border-radius: 0 2px solid red;
-  }
+  text-align: center;
+  border: 1px solid;
+  flex: 1;
+  min-width: 70%;
+  display: inline-block;
+  // &.centered {
+  //   text-align: center;
+  // }
 }
 
 .settings-wraper {
@@ -302,9 +329,7 @@ body,
 html {
   margin: 0;
   padding: 0;
-      height: 100%;
-
+  height: 100%;
 }
-
 </style>
 

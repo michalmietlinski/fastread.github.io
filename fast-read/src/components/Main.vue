@@ -2,13 +2,25 @@
   <div>
     <div class="introduction">
       <h2>{{copy.section ? copy.section.main.header : ''}}</h2>
-            <img class="main-Img" src="../assets/a2.png" >
+            <!-- <img class="main-Img" src="../assets/a2.png" > -->
       <p>{{copy.section ? copy.section.main.describtion : ''}}</p>
     </div>
-
     <div class="inputtext">
       <textarea class="textareaMain" v-on:change="restart();" v-model="texttoread"></textarea>
     </div>
+    
+        <button v-on:click="start()" ><img class="controlsImg" src="../assets/play2.png" > {{copy.menu  ? copy.controls.start: ''}}</button>
+        <button v-on:click="stop()"><img class="controlsImg" src="../assets/pause.svg" > {{copy.menu  ? copy.controls.stop : ''}}</button>
+        <button v-on:click="restart()"><img class="controlsImg" src="../assets/repeat.svg" > {{copy.menu  ? copy.controls.restart: ''}}</button>
+        <button v-on:click="rewind()"><img class="controlsImg" src="../assets/replay.png" > {{copy.menu  ? copy.controls.rewind: ''}}</button>
+        <button v-on:click="download()"><img class="controlsImg" src="../assets/download.svg" > Download</button>
+        <!-- Brak Cleara ! czyszczenia okna ! -->
+        <br></br>
+
+<!-- <div class="controls-wraper" v-bind:class="{ activeControls: showContorls }">
+      <div v-on:click="showControls = !showControls">
+      <img class="controlsImg" src="../assets/download.svg" > 
+  </div>  -->
 
     <div class="controls">
       <div class="column">
@@ -40,13 +52,8 @@
         </div>
       </div>            
     </div>  
-      <div>
-        <button v-on:click="stop()">{{copy.menu  ? copy.controls.stop : ''}}</button>
-        <button v-on:click="start()">{{copy.menu  ? copy.controls.start: ''}}</button>
-        <button v-on:click="restart()">{{copy.menu  ? copy.controls.restart: ''}}</button>
-        <button v-on:click="rewind()">{{copy.menu  ? copy.controls.rewind: ''}}</button>
-        <button v-on:click="download()">Download</button>
-      </div>
+      
+      </br>
    
     <div class="resulttext centered">
       <h1 v-for="line in readtext.split('$#$')" v-bind:key="line">{{line}}</h1>
@@ -182,50 +189,6 @@ export default {
 };
 </script>
 <style lang="scss">
-.controls {
-    display: inline-block;
-    font-size: 16px;
-    line-height: 25px;
-    text-align: left;
-    left: 100px;
-    .column:first-of-type {
-      .row{
-        padding-left:10px;
-      }
-    }
-    .column{
-      min-width: 110px;
-      float: left;
-    }
-    .row{
-      border-bottom: 2px solid;
-      margin-bottom: 10px;
-      position:relative;
-      input{
-          margin: 0;
-          padding: 0 5px;
-          border: 0;
-          background: var(--main_active_color, #489e54);
-          color: #fff;
-          height: 23px;
-      }
-      span{
-        position:absolute;
-        right:0;
-        transform: translateX(100%);
-        padding: 0 10px;
-        background: var(--main_active_color, #489e54);
-        color: #fff;
-        border-radius: 0 10px;
-      }
-      span:nth-of-type(1){
-        right:-10px;
-      }
-      span:nth-of-type(2){
-        right:-60px;
-      }
-    }
-}
 
 .main-Img {
    position: relative;
@@ -235,6 +198,12 @@ export default {
    max-width: 80px;
    width: 35%;
    transform: rotate(45deg);
+}
+.controlsImg {
+  display: inline-block;
+  vertical-align: middle;
+  width: 2.1875em;
+  height: 2.1875em;
 }
 
 </style>
