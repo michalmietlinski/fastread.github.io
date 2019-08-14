@@ -2,7 +2,6 @@
   <div id="app">
     <div class="column-wrapper">
       <div id="nav">
-        <img class="mainImg" src="../images/a1.png">
         <ul>
           <li>
             <router-link to="/">{{copy.menu ? copy.menu.home : ''}}</router-link>
@@ -64,272 +63,303 @@
   <!-- DURING WORK BREAKING FLOOW, FIX IT LATER -->
 </template>
 <script>
-import { mapState } from "vuex";
+    import {mapState} from "vuex";
 
-export default {
-  name: "appView",
-  data() {
-    return {
-      showSettings: false
+    export default {
+        name: "appView",
+        data() {
+            return {
+                showSettings: false
+            };
+        },
+        computed: {
+            ...mapState([
+                "language",
+                "availableLanguages",
+                "copy",
+                "styles",
+                "availableThemes",
+                "theme"
+            ])
+        },
+        methods: {
+            setLanguage(e) {
+                this.$store.dispatch("setLanguage", e.target.value);
+            },
+            setTheme(e) {
+                this.$store.dispatch("setTheme", e.target.value);
+            }
+        },
+        watch: {
+            styles: function (newVal) {
+                this.$el.style.setProperty("--main_active_color", this.styles.mainColor);
+            }
+        },
+        mounted() {
+            window.addEventListener("load", () => {
+                // run after everything is in-place
+                this.$el.style.setProperty("--main_active_color", this.styles.mainColor);
+            });
+        }
     };
-  },
-  computed: {
-    ...mapState([
-      "language",
-      "availableLanguages",
-      "copy",
-      "styles",
-      "availableThemes",
-      "theme"
-    ])
-  },
-  methods: {
-    setLanguage(e) {
-      this.$store.dispatch("setLanguage", e.target.value);
-    },
-    setTheme(e) {
-      this.$store.dispatch("setTheme", e.target.value);
-    }
-  },
-  watch: {
-    styles: function(newVal) {
-      this.$el.style.setProperty("--main_active_color", this.styles.mainColor);
-    }
-  },
-  mounted() {
-    window.addEventListener("load", () => {
-      // run after everything is in-place
-      this.$el.style.setProperty("--main_active_color", this.styles.mainColor);
-    });
-  }
-};
 </script>
-<style>
-@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css";
-</style>
 <style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  box-sizing: border-box;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: stretch;
-}
-#app * {
-  box-sizing: border-box;
-}
-#nav {
-  padding: 0.5%;
-  flex: 0 0 24px;
-  z-index: 2;
-  min-height: 100%;
-  // text-align: left;
-  text-align: center;
-  background: var(--main_active_color, #00c853);
+  #app {
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+  }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-    text-align: left;
+  #app * {
+    box-sizing: border-box;
 
-    li {
-      display: block;
-      margin: 0.5vw 1vw;
-      font-size: 1.5em;
+  }
+
+  #nav {
+    display: block;
+    box-sizing: content-box;
+    text-align: center;
+    min-height: 5vh;
+    max-height: 18vh;
+    z-index: 2;
+    margin: 5%;
+
+    ul {
+      list-style-type: none;
+      text-align: left;
+      min-width:155px ;
+      padding: 12%;
+      border: 1px solid black;
+      border-radius: 0 25% 0 25%;
+      background: white;
+      box-shadow: 10px 5px 5px #3C8CBE;
+
+      li {
+        display: block;
+        font-size: 1.5em;
+        background: white;
+      }
+    }
+
+    a {
+      font-weight: bold;
+      padding: 0 10px;
+      color: #424242;
+      background: white;
+
+      &.router-link-exact-active {
+        font-weight: 700;
+        text-decoration: underline;
+      }
     }
   }
-  a {
-    font-weight: bold;
-    padding: 0 10px;
-    color: #424242;
-    //  #eeeeee;
-    &.router-link-exact-active {
-      font-weight: 700;
-      text-decoration: underline;
-      // color: var(--main_active_color, #42b983) ;
-    }
-  }
-}
-.mainImg {
-  max-width: 2vw;
+
+  /*.mainImg {*/
+  /*  max-width: 2vw;*/
   // display: inline-block ;
   // text-align: center;
-}
-.column-wrapper {
-  flex: 1 1 auto;
-  display: flex;
-}
-.app-wrapper {
-  flex: 1 1;
-  overflow-y: scroll;
-}
-button {
-  background: #00e676;
-  // #218a5b;
-  font-weight: bold;
-  font-size: 18px;
-  border: none;
-  margin: 0 3px;
-  padding: 3px 10px;
-  color: #424242;
-  // rgb(241, 241, 241);
-  &:hover {
-    background: #69f0ae;
+  /*}*/
+  .column-wrapper {
+    display: flex;
+    flex: 1 1;
   }
-}
-// CONTACT + COUNTER + MAIN - THE SAME STYL FOR CSS
 
-h3 {
-  margin: 0 0 10px 0;
-}
-h2 {
-  font-size: 2em;
-}
-p {
-  font-size: 1em;
-}
-a {
-  color: var(--main_active_color, #42b983);
-}
+  .app-wrapper {
+    flex: 1 1;
+    margin: 2vh 2vh 0 0 ;
 
-.container {
-  display: inline-block;
-  width: 800px;
-  height: 600px;
-  position: relative;
-  background: #302e2e;
-  color: #ff1919;
-  text-transform: uppercase;
-}
-.container-jumper {
-  display: inline-block;
-  width: 100%;
-  height: 600px;
-  position: relative;
-  background: #302e2e;
-  color: #ff1919;
-  text-transform: uppercase;
-}
-.center {
-  text-align: center;
-}
+  }
 
-.introduction {
-  display: inline-block;
-  max-width: 800px;
-  text-align: center;
-}
-.textareaMain {
-  max-width: 800px;
-  min-width: 645px;
-  min-height: 215px;
-  padding: 0;
-  margin-right: 0 3px 3px 3px;
-  display: inline-block;
-}
+  button {
+    background: #CCEBC5;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    margin: 0 3px;
+    padding: 3px 10px;
+    color: #424242;
 
-.controls {
-  display: inline-block;
-  font-size: 16px;
-  line-height: 25px;
-  text-align: left;
-  max-width: 500px;
-  .column:first-of-type {
-    .row {
-      padding-left: 10px;
+    &:hover {
+      background: #69f0ae;
     }
   }
-  .column {
-    min-width: 110px;
-    float: left;
+
+  // CONTACT + COUNTER + MAIN - THE SAME STYL FOR CSS
+
+  h3 {
+    margin: 0 0 10px 0;
   }
-  .row {
-    border-bottom: 2px solid;
-    margin-bottom: 10px;
+
+  h2 {
+    font-size: 2em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  a {
+    color: var(--main_active_color, #42b983);
+  }
+
+  .container {
+    display: inline-block;
+    width: 800px;
+    height: 600px;
     position: relative;
-    input {
-      margin: 0;
-      padding: 0 5px;
-      border: 0;
-      background: darkgray;
-      color: #e60186;
-      height: 23px;
+    background: #302e2e;
+    color: #ff1919;
+    text-transform: uppercase;
+  }
+
+  .container-jumper {
+    display: inline-block;
+    width: 100%;
+    height: 600px;
+    position: relative;
+    background: #302e2e;
+    color: #ff1919;
+    text-transform: uppercase;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .introduction {
+    display: inline-block;
+    max-width: 800px;
+    text-align: center;
+  }
+
+  .textareaMain {
+    max-width: 800px;
+    min-width: 645px;
+    min-height: 215px;
+    padding: 0;
+    margin-right: 0 3px 3px 3px;
+    display: inline-block;
+  }
+
+  .controls {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: left;
+    max-width: 500px;
+
+    .column:first-of-type {
+      .row {
+        padding-left: 10px;
+      }
     }
-    span {
-      position: absolute;
-      right: 0;
-      transform: translateX(100%);
-      padding: 0 10px;
-      background: darkgray;
-      color: #e60186;
-      border-radius: 0 10px;
+
+    .column {
+      min-width: 110px;
+      float: left;
     }
-    span:nth-of-type(1) {
-      right: -10px;
-    }
-    span:nth-of-type(2) {
-      right: -60px;
+
+    .row {
+      border-bottom: 2px solid;
+      margin-bottom: 10px;
+      position: relative;
+
+      input {
+        margin: 0;
+        padding: 0 5px;
+        border: 0;
+        background: #F7FCF0;
+        color: #56B4D3;
+        height: 23px;
+      }
+
+      span {
+        position: absolute;
+        right: 0;
+        transform: translateX(100%);
+        padding: 0 10px;
+        background: #F7FCF0;
+        color: #56B4D3;
+        border-radius: 0 10px;
+      }
+
+      span:nth-of-type(1) {
+        right: -10px;
+      }
+
+      span:nth-of-type(2) {
+        right: -60px;
+      }
     }
   }
-}
-.results {
-  text-align: left;
-}
 
-.resulttext {
-  text-align: center;
-  border: 1px solid;
-  flex: 1;
-  min-width: 70%;
-  display: inline-block;
-  // &.centered {
-  //   text-align: center;
-  // }
-}
+  .results {
+    text-align: left;
+  }
 
-.settings-wraper {
-  position: absolute;
-  right: 0;
-  &.activeSettings {
+  .resulttext {
+    text-align: center;
+    border: 1px solid;
+    flex: 1;
+    min-width: 70%;
+    display: inline-block;
+    margin-bottom: 2vh;
+  }
+
+  .settings-wraper {
+    position: absolute;
+    right: 0;
+
+    &.activeSettings {
+      .settings {
+        display: block;
+        border-radius: 0 0 0 30px;
+        font-weight: 250;
+      }
+    }
+
     .settings {
-      display: block;
-      border-radius: 0 0 0 30px;
-      font-weight: 250;
-    }
-  }
-  .settings {
-    h2 {
-      margin: 0;
-    }
-    display: none;
-    padding: 5px;
-    color: whitesmoke;
-    background: var(--main_active_color, #42b983);
-    float: left;
-    max-width: 200px;
-  }
-  .img1 {
-    float: left;
-    max-width: 50px;
-    img {
-      width: 100%;
-    }
-  }
-}
+      h2 {
+        margin: 0;
+      }
 
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
+      display: none;
+      padding: 5px;
+      color: whitesmoke;
+      background: var(--main_active_color, #56B4D3);
+      float: left;
+      max-width: 200px;
+    }
+
+    .img1 {
+      float: left;
+      max-width: 50px;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #56B4D3;
+  }
+</style>
+<style>
+  @import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css";
 </style>
 

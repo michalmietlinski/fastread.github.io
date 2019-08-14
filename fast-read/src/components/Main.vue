@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-Main">
     <div class="introduction">
       <h2>{{copy.section ? copy.section.main.header : ''}}</h2>
             <!-- <img class="main-Img" src="../assets/a2.png" > -->
@@ -8,7 +8,7 @@
     <div class="inputtext">
       <textarea class="textareaMain" v-on:change="restart();" v-model="texttoread"></textarea>
     </div>
-    
+
         <button v-on:click="start()" ><img class="controlsImg" src="../assets/play2.png" > {{copy.menu  ? copy.controls.start: ''}}</button>
         <button v-on:click="stop()"><img class="controlsImg" src="../assets/pause.svg" > {{copy.menu  ? copy.controls.stop : ''}}</button>
         <button v-on:click="restart()"><img class="controlsImg" src="../assets/repeat.svg" > {{copy.menu  ? copy.controls.restart: ''}}</button>
@@ -19,7 +19,7 @@
 
 <!-- <div class="controls-wraper" v-bind:class="{ activeControls: showContorls }">
       <div v-on:click="showControls = !showControls">
-      <img class="controlsImg" src="../assets/download.svg" > 
+      <img class="controlsImg" src="../assets/download.svg" >
   </div>  -->
 
     <div class="controls">
@@ -50,23 +50,25 @@
           <!-- <div class="text"> {{copy.menu ? copy.controls.rows : ''}}</div> -->
           <input type="number" v-on:change="updateNumberofrows" :value="numberofrows">
         </div>
-      </div>            
-    </div>  
-      
+      </div>
+    </div>
+
       </br>
-   
+
     <div class="resulttext centered">
       <h1 v-for="line in readtext.split('$#$')" v-bind:key="line">{{line}}</h1>
     </div>
-    <hr>
-     <ul>
-         <li v-for="(item, index) in availableArticles" v-bind:key="index">
-           {{item.title}}
-           {{item.pubDate}}
-         </li>
-         </ul>
-    {{this.availableArticles}}
-    <hr>
+
+<!--    FOR RSS READER-->
+<!--    <hr>-->
+<!--     <ul>-->
+<!--         <li v-for="(item, index) in availableArticles" v-bind:key="index">-->
+<!--           {{item.title}}-->
+<!--           {{item.pubDate}}-->
+<!--         </li>-->
+<!--         </ul>-->
+<!--    {{this.availableArticles}}-->
+<!--    <hr>-->
   </div>
 </template>
 
@@ -190,15 +192,14 @@ export default {
 </script>
 <style lang="scss">
 
-.main-Img {
-   position: relative;
-   left: 25px;
-   top: -20px;
-   float: left;
-   max-width: 80px;
-   width: 35%;
-   transform: rotate(45deg);
-}
+  .container-Main {
+    border: 1px solid black;
+    background: white;
+    border-radius: 0 8% 0 8%;
+    box-shadow: 8px 5px 5px #3C8CBE;
+    max-width: 900px;
+  }
+
 .controlsImg {
   display: inline-block;
   vertical-align: middle;
