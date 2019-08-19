@@ -158,7 +158,7 @@
       background: white;
       cursor: pointer;
       text-decoration: none;
-      margin-bottom: 2px  ;
+      margin-bottom: 2px;
 
       &:hover {
         background-color: hsla(50, 98%, 53%, 0.3);
@@ -244,7 +244,7 @@
     text-align: center;
   }
 
-  .resulttext,
+  /*.resulttext,*/
   .textareaMain {
     display: inline-block;
     max-width: 800px;
@@ -261,16 +261,30 @@
       box-shadow: 3px 3px 3px hsla(293, 78%, 69%, 0.2);
     }
   }
-  .resulttext {
-    text-align: left;
-    font-size: 25px;
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    border: 1px solid black;
-    outline-style: none;
-    box-shadow: 3px 3px 3px hsla(293, 78%, 69%, 0.2);
-    margin-bottom: 5px;
+
+  /*.resulttext {*/
+  /*  text-align: left;*/
+  /*  font-size: 25px;*/
+  /*  font-family: "Avenir", Helvetica, Arial, sans-serif;*/
+  /*  font-weight: 400;*/
+  /*  border: 1px solid black;*/
+  /*  outline-style: none;*/
+  /*  box-shadow: 3px 3px 3px hsla(293, 78%, 69%, 0.2);*/
+  /*  margin-bottom: 5px;*/
+  /*}*/
+  .container-Main {
+    .resulttext  {
+      text-align: center;
+      border: 1px solid;
+      flex: 1;
+      min-width: 70%;
+      display: inline-block;
+      margin-bottom: 2vh;
+    }
   }
+
+
+
 
   .controls {
     display: flex;
@@ -341,8 +355,6 @@
   .results {
     text-align: left;
   }
-
-
 
   .settings-wraper {
     position: absolute;

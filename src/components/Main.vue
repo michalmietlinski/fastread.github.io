@@ -11,7 +11,7 @@
     <button v-on:click="start()"><img class="controlsImg play" blank-color="red" title="play" src="../assets/play2.png">
       {{copy.menu ? copy.controls.start: ''}}
     </button>
-    <button v-on:click="stop()"><img class="controlsImg"  title="pause" src="../assets/pause.svg">
+    <button v-on:click="stop()"><img class="controlsImg"  title="stop" src="../assets/stop.png">
       {{copy.menu ? copy.controls.stop : ''}}
     </button>
     <button v-on:click="restart()"><img class="controlsImg" title="repeat"
@@ -132,7 +132,7 @@
                             for (let i = 1; i < parseInt(this.numberofrows, 10); i++) {
                                 if (this.splitted[this.wordcount + i]) {
                                     this.readtinputteext = this.readtext.concat("$#$");
-                                    this.readtext = this.readtext.concat(
+                                    this.readtext = this.readtinputteext.concat(
                                         this.splitted[this.wordcount + i]
                                     );
                                 }
