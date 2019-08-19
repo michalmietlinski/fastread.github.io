@@ -1,14 +1,25 @@
 <template>
-  <div>
+  <div class="container-Main">
     <div class="introduction">
       <h2>{{copy.section ? copy.section.main.header : ''}}</h2>
-            <img class="main-Img" src="../assets/a2.png" >
       <p>{{copy.section ? copy.section.main.describtion : ''}}</p>
     </div>
-
     <div class="inputtext">
       <textarea class="textareaMain" v-on:change="restart();" v-model="texttoread"></textarea>
     </div>
+
+        <button v-on:click="start()" ><img class="controlsImg" src="../assets/play2.png" > {{copy.menu  ? copy.controls.start: ''}}</button>
+        <button v-on:click="stop()"><img class="controlsImg" src="../assets/pause.svg" > {{copy.menu  ? copy.controls.stop : ''}}</button>
+        <button v-on:click="restart()"><img class="controlsImg" src="../assets/repeat.svg" > {{copy.menu  ? copy.controls.restart: ''}}</button>
+        <button v-on:click="rewind()"><img class="controlsImg" src="../assets/replay.png" > {{copy.menu  ? copy.controls.rewind: ''}}</button>
+        <button v-on:click="download()"><img class="controlsImg" src="../assets/download.svg" > Download</button>
+        <!-- Brak Cleara ! czyszczenia okna ! -->
+        <br></br>
+
+<!-- <div class="controls-wraper" v-bind:class="{ activeControls: showContorls }">
+      <div v-on:click="showControls = !showControls">
+      <img class="controlsImg" src="../assets/download.svg" >
+  </div>  -->
 
     <div class="controls">
       <div class="column">
@@ -38,28 +49,25 @@
           <!-- <div class="text"> {{copy.menu ? copy.controls.rows : ''}}</div> -->
           <input type="number" v-on:change="updateNumberofrows" :value="numberofrows">
         </div>
-      </div>            
-    </div>  
-      <div>
-        <button v-on:click="stop()">{{copy.menu  ? copy.controls.stop : ''}}</button>
-        <button v-on:click="start()">{{copy.menu  ? copy.controls.start: ''}}</button>
-        <button v-on:click="restart()">{{copy.menu  ? copy.controls.restart: ''}}</button>
-        <button v-on:click="rewind()">{{copy.menu  ? copy.controls.rewind: ''}}</button>
-        <button v-on:click="download()">Download</button>
       </div>
-   
+    </div>
+
+      </br>
+
     <div class="resulttext centered">
       <h1 v-for="line in readtext.split('$#$')" v-bind:key="line">{{line}}</h1>
     </div>
-    <hr>
-     <ul>
-         <li v-for="(item, index) in availableArticles" v-bind:key="index">
-           {{item.title}}
-           {{item.pubDate}}
-         </li>
-         </ul>
-    {{this.availableArticles}}
-    <hr>
+
+<!--    FOR RSS READER-->
+<!--    <hr>-->
+<!--     <ul>-->
+<!--         <li v-for="(item, index) in availableArticles" v-bind:key="index">-->
+<!--           {{item.title}}-->
+<!--           {{item.pubDate}}-->
+<!--         </li>-->
+<!--         </ul>-->
+<!--    {{this.availableArticles}}-->
+<!--    <hr>-->
   </div>
 </template>
 

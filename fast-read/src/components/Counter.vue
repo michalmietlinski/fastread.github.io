@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="container-Main ">
     <div class="introduction">
       <h2>{{copy.section ? copy.section.counter.header : ''}}</h2>
       <p>{{copy.section ? copy.section.counter.describtion : ''}}</p>
     </div>
-  
+
     <div class="inputtext">
       <h3>{{copy.section ? copy.section.counter.inputtextdesc : ''}}</h3>
       <textarea class="textareaMain" v-if="!watchplaying" v-model="texttoread2"></textarea>
