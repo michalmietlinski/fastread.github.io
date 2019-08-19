@@ -2,7 +2,6 @@
   <div class="container-Main">
     <div class="introduction">
       <h2>{{copy.section ? copy.section.main.header : ''}}</h2>
-            <!-- <img class="main-Img" src="../assets/a2.png" > -->
       <p>{{copy.section ? copy.section.main.describtion : ''}}</p>
     </div>
     <div class="inputtext">
@@ -191,20 +190,59 @@ export default {
 };
 </script>
 <style lang="scss">
+.controls {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: left;
+    left: 100px;
+    .column:first-of-type {
+      .row{
+        padding-left:10px;
+      }
+    }
+    .column{
+      min-width: 110px;
+      float: left;
+    }
+    .row{
+      border-bottom: 2px solid;
+      margin-bottom: 10px;
+      position:relative;
+      input{
+          margin: 0;
+          padding: 0 5px;
+          border: 0;
+          background: var(--main_active_color, #489e54);
+          color: #fff;
+          height: 23px;
+      }
+      span{
+        position:absolute;
+        right:0;
+        transform: translateX(100%);
+        padding: 0 10px;
+        background: var(--main_active_color, #489e54);
+        color: #fff;
+        border-radius: 0 10px;
+      }
+      span:nth-of-type(1){
+        right:-10px;
+      }
+      span:nth-of-type(2){
+        right:-60px;
+      }
+    }
+}
 
-  .container-Main {
-    border: 1px solid black;
-    background: white;
-    border-radius: 0 8% 0 8%;
-    box-shadow: 8px 5px 5px #3C8CBE;
-    max-width: 900px;
-  }
-
-.controlsImg {
-  display: inline-block;
-  vertical-align: middle;
-  width: 2.1875em;
-  height: 2.1875em;
+.main-Img {
+   position: relative;
+   left: 25px;
+   top: -20px;
+   float: left;
+   max-width: 80px;
+   width: 35%;
+   transform: rotate(45deg);
 }
 
 </style>
