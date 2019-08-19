@@ -9,7 +9,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://michalmietlinski.github.io/fastread.github.io/",
   "dependencies": {
     "rss-parser": "^3.6.3",
     "vue": "^2.5.22",

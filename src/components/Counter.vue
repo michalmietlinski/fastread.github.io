@@ -58,9 +58,9 @@ export default {
                 },
                 // setter
                 set: function (newValue) {
-                  this.partialtext = val.split(' ');
-                  this.wordcount = 0;
                   this.$store.dispatch('setText', newValue)
+                  this.partialtext = newValue.split(' ');
+                  this.wordcount = 0;
                 }
             }
   },
