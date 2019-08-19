@@ -9,7 +9,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage":"https://yourusername.github.io/repository-name",
+  "homepage": "https://yourusername.github.io/repository-name",
   "dependencies": {
     "rss-parser": "^3.6.3",
     "vue": "^2.5.22",
