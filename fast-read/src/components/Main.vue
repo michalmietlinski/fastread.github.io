@@ -208,7 +208,7 @@
     border: 1px solid black;
     background: white;
     border-radius: 0 8% 0 8%;
-    box-shadow: 8px 5px 5px #3C8CBE;
+    box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
     max-width: 900px;
   }
 
