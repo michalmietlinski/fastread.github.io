@@ -5,8 +5,11 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
+  "homepage":"https://yourusername.github.io/repository-name",
   "dependencies": {
     "rss-parser": "^3.6.3",
     "vue": "^2.5.22",
