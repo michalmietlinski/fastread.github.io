@@ -222,15 +222,7 @@
     text-transform: uppercase;
   }
 
-  .container-jumper {
-    display: inline-block;
-    width: 100%;
-    height: 600px;
-    position: relative;
-    background: #302e2e;
-    color: #ff1919;
-    text-transform: uppercase;
-  }
+
 
   .center {
     text-align: center;
@@ -279,7 +271,7 @@
         padding: 0 5px;
         border: 0;
         background: #F7FCF0;
-        color: #56B4D3;
+        color: #3F7450;
         height: 23px;
       }
 
@@ -289,7 +281,7 @@
         transform: translateX(100%);
         padding: 0 10px;
         background: #F7FCF0;
-        color: #56B4D3;
+        color: #3F7450;
         border-radius: 0 10px;
       }
 

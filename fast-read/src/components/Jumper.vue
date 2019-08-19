@@ -4,7 +4,7 @@
       <h2>{{copy.section ? copy.section.jumper.header : ''}}</h2>
       <p>{{copy.section ? copy.section.jumper.describtion : ''}}</p>
     </div>
-    <div class="container-jumper">
+    <div class="container-jumper" :style="{'width':widthSliderValue, 'height':heightScale}">
       <div class="topleft">{{spot0}}</div>
       <div class="topright">{{spot1}}</div>
       <div class="bottomleft">{{spot2}}</div>
@@ -21,6 +21,9 @@
         </div>
       </div>
     </div>
+      <div>
+        <input type="range" min="52" max="100" value="97" id="range-slider" v-model="texttoread4"/>
+      </div>
   </div>
 </template>
 
@@ -41,11 +44,19 @@
             jumprandom: false,
             jumpstop: false,
             texttoread3: '',
+
+            texttoread4: 100,
         }),
         computed: {
             ...mapState([
                 'copy'
             ]),
+            widthSliderValue: function () {
+                return  this.texttoread4.valueOf() + "%";
+            },
+            heightScale: function () {
+                return this.texttoread4.valueOf() *7 +"px";
+            }
         },
         methods: {
             startjump() {
@@ -85,8 +96,16 @@
     };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+
+  .container-jumper {
+    display: inline-block;
+    position: relative;
+    background: #302e2e;
+    color: #F6BF45/*red*/;
+    text-transform: uppercase;
+  }
+
 
   .container-main-jumper {
     background: white;
@@ -147,6 +166,95 @@
         margin-bottom: 10px;
       }
     }
+
+      #range-slider  {
+        -webkit-appearance: none;
+        margin: 2.5vh 0;
+        width: 50%;
+      }
+    #range-slider:focus {
+        outline: none;
+      }
+    #range-slider::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 8.4px;
+        cursor: pointer;
+        animate: 0.2s;
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+        background: #CCEBC5;
+        border-radius: 1.3px;
+        border: 0.2px solid #010101;
+      }
+    #range-slider::-webkit-slider-thumb {
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+        border: 1px solid #000000;
+        height: 26px;
+        width: 26px;
+        border-radius: 50%/*3px*/;
+        background: #F7FCF0;
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -11px;
+      }
+    #range-slider:focus::-webkit-slider-runnable-track {
+        background: #A8DDB5;
+      }
+      /*input[type=range]::-moz-range-track {*/
+      /*  width: 100%;*/
+      /*  height: 8.4px;*/
+      /*  cursor: pointer;*/
+      /*  animate: 0.2s;*/
+      /*  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
+      /*  background: #3071a9;*/
+      /*  border-radius: 1.3px;*/
+      /*  border: 0.2px solid #010101;*/
+      /*}*/
+      /*input[type=range]::-moz-range-thumb {*/
+      /*  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
+      /*  border: 1px solid #000000;*/
+      /*  height: 36px;*/
+      /*  width: 16px;*/
+      /*  border-radius: 3px;*/
+      /*  background: #ffffff;*/
+      /*  cursor: pointer;*/
+      /*}*/
+      /*input[type=range]::-ms-track {*/
+      /*  width: 100%;*/
+      /*  height: 8.4px;*/
+      /*  cursor: pointer;*/
+      /*  animate: 0.2s;*/
+      /*  background: transparent;*/
+      /*  border-color: transparent;*/
+      /*  border-width: 16px 0;*/
+      /*  color: transparent;*/
+      /*}*/
+      /*input[type=range]::-ms-fill-lower {*/
+      /*  background: #2a6495;*/
+      /*  border: 0.2px solid #010101;*/
+      /*  border-radius: 2.6px;*/
+      /*  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
+      /*}*/
+      /*input[type=range]::-ms-fill-upper {*/
+      /*  background: #3071a9;*/
+      /*  border: 0.2px solid #010101;*/
+      /*  border-radius: 2.6px;*/
+      /*  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
+      /*}*/
+      /*input[type=range]::-ms-thumb {*/
+      /*  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
+      /*  border: 1px solid #000000;*/
+      /*  height: 36px;*/
+      /*  width: 16px;*/
+      /*  border-radius: 3px;*/
+      /*  background: #ffffff;*/
+      /*  cursor: pointer;*/
+      /*}*/
+      /*input[type=range]:focus::-ms-fill-lower {*/
+      /*  background: #3071a9;*/
+      /*}*/
+      /*input[type=range]:focus::-ms-fill-upper {*/
+      /*  background: #367ebd;*/
+      /*}*/
   }
 
 
