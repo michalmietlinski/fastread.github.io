@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '/fastread.github.io/',
+  publicPath: '/fastread/',
 };
