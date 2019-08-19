@@ -52,6 +52,7 @@
       border: 1px solid black;
       border-radius: 0 20% 0 25%;
       background: white;
+      box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
 
       li {
         display: block;

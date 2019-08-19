@@ -43,8 +43,6 @@
             jumpspeed: 100,
             jumprandom: false,
             jumpstop: false,
-            texttoread3: '',
-
             texttoread4: 100,
         }),
         computed: {
@@ -56,6 +54,15 @@
             },
             heightScale: function () {
                 return this.texttoread4.valueOf() *7 +"px";
+            },
+            texttoread3: {
+                get: function () {
+                    return this.$store.state.texttoread
+                },
+                // setter
+                set: function (newValue) {
+                  this.$store.dispatch('setText', newValue)
+                }
             }
         },
         methods: {
@@ -111,7 +118,7 @@
     background: white;
     border-radius: 0 8% 0 8%;
     border: 1px solid black;
-    box-shadow: 8px 5px 5px #3C8CBE;
+    box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
     max-width: 1400px;
     min-height: 800px;
 
@@ -145,8 +152,9 @@
 
     .textareaJumper {
       width: 90%;
-      max-width: 500px;
-      min-height: 300px;
+      max-width: 450px;
+      min-height: 230px;
+      resize: none;
     }
 
     .container-jumper textarea {
@@ -165,6 +173,10 @@
       button {
         margin-bottom: 10px;
       }
+      input {
+        height: 25px;
+        padding-top: 7px;
+      }
     }
 
       #range-slider  {
@@ -181,7 +193,7 @@
         cursor: pointer;
         animate: 0.2s;
         box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-        background: #CCEBC5;
+        background: #FCD612;
         border-radius: 1.3px;
         border: 0.2px solid #010101;
       }
@@ -196,10 +208,7 @@
         -webkit-appearance: none;
         margin-top: -11px;
       }
-    #range-slider:focus::-webkit-slider-runnable-track {
-        background: #A8DDB5;
-      }
-      /*input[type=range]::-moz-range-track {*/
+         /*input[type=range]::-moz-range-track {*/
       /*  width: 100%;*/
       /*  height: 8.4px;*/
       /*  cursor: pointer;*/
