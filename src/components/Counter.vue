@@ -12,108 +12,140 @@
     <div class="resulttext" v-if="watchplaying">{{texttoread2}}</div>
 
     <div class="controls">
-      <button v-on:click="stopWatch()" v-if="watchplaying">{{copy.menu  ? copy.controls.stop : ''}}</button>
-      <button v-on:click="startWatch()" v-if="!watchplaying">{{copy.menu  ? copy.controls.start : ''}}</button>
-      <button v-on:click="resetWatch()">{{copy.menu  ? copy.controls.reset : ''}}</button>
+      <button v-on:click="stopWatch()" v-if="watchplaying">{{copy.menu ? copy.controls.stop : ''}}
+      </button>
+      <button v-on:click="startWatch()" v-if="!watchplaying">{{copy.menu ? copy.controls.start :
+        ''}}
+      </button>
+      <button v-on:click="resetWatch()">{{copy.menu ? copy.controls.reset : ''}}</button>
     </div>
-    <hr>
+
     <div class="results">
-    <h2></h2>
-    <ul>
-         <li v-for="(item, index) in previousresults" v-bind:key="index">
-           <span class="latest" v-if="index===0">{{copy.section ? copy.section.counter.latest : ''}}</span>
-           <p><span>{{copy.section ? copy.section.counter.timeOfReading : ''}}:</span> {{item.time/1000}}s</p>
-           <p><span>{{copy.section ? copy.section.counter.numberOfWords : ''}}:</span> {{item.words}}</p>
-           <p><span>{{copy.section ? copy.section.counter.wordsPerMinute : ''}}:</span> {{item.wpm}}</p>
-           </li>
-           </ul>
+      <h2></h2>
+      <ul>
+        <li v-for="(item, index) in previousresults" v-bind:key="index">
+          <span class="latest"
+                v-if="index===0">{{copy.section ? copy.section.counter.latest : ''}}</span>
+          <p><span>{{copy.section ? copy.section.counter.timeOfReading : ''}}:</span>
+            {{item.time/1000}}s</p>
+          <p><span>{{copy.section ? copy.section.counter.numberOfWords : ''}}:</span> {{item.words}}
+          </p>
+          <p><span>{{copy.section ? copy.section.counter.wordsPerMinute : ''}}:</span> {{item.wpm}}
+          </p>
+        </li>
+      </ul>
     </div>
 
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex';
+    import {mapState} from 'vuex';
 
-export default {
-  name: 'Counter',
-  data: () => ({
-    // Responsible for content
-    wordcount: 0,
-    playing: false,
-    watchtime: 0,
-    watchplaying: false,
-    starttime: 0,
-    stoptime: 0,
-    watchresult: {},
-    previousresults:[],
-  }),
-  computed: {
-      ...mapState([
-      'copy'
-    ]),
-    texttoread2: {
+    export default {
+        name: 'Counter',
+        data: () => ({
+            // Responsible for content
+            wordcount: 0,
+            playing: false,
+            watchtime: 0,
+            watchplaying: false,
+            starttime: 0,
+            stoptime: 0,
+            watchresult: {},
+            previousresults: [],
+        }),
+        computed: {
+            ...mapState([
+                'copy'
+            ]),
+            texttoread2: {
                 get: function () {
                     return this.$store.state.texttoread
                 },
                 // setter
                 set: function (newValue) {
-                  this.$store.dispatch('setText', newValue)
-                  this.partialtext = newValue.split(' ');
-                  this.wordcount = 0;
+                    this.$store.dispatch('setText', newValue)
+                    this.partialtext = newValue.split(' ');
+                    this.wordcount = 0;
                 }
             }
-  },
-  methods: {
-    watch() {
-      if (this.watchplaying) {
-        setTimeout(() => {
-          this.watchtime = this.watchtime + 10;
-          this.watch();
-        }, 10);
-      }
-    },
-    startWatch() {
-      if (!this.watchplaying) {
-        this.starttime = new Date();
-        this.watchplaying = true;
-        this.watch.bind(this);
-        this.watch();
-      }
-    },
-    stopWatch() {
-      this.watchplaying = false;
-      this.stoptime = new Date();
-      const watchresult = {
-        time: this.stoptime - this.starttime,
-        words: this.texttoread2.split(/[ ,\s]+/).length,
-        wpm: Math.floor(
-          (this.texttoread2.split(/[ ,\s]+/).length * 1000 * 60)
-            / (this.stoptime - this.starttime),
-        ),
-      };
-      this.previousresults.unshift(watchresult)
-      this.watchtime = 0;
-    },
-    resetWatch() {
-      this.watchplaying = false;
-      this.watchtime = 0;
-      this.texttoread2='';
-    },
-  },
-};
+        },
+        methods: {
+            watch() {
+                if (this.watchplaying) {
+                    setTimeout(() => {
+                        this.watchtime = this.watchtime + 10;
+                        this.watch();
+                    }, 10);
+                }
+            },
+            startWatch() {
+                if (!this.watchplaying) {
+                    this.starttime = new Date();
+                    this.watchplaying = true;
+                    this.watch.bind(this);
+                    this.watch();
+                }
+            },
+            stopWatch() {
+                this.watchplaying = false;
+                this.stoptime = new Date();
+                const watchresult = {
+                    time: this.stoptime - this.starttime,
+                    words: this.texttoread2.split(/[ ,\s]+/).length,
+                    wpm: Math.floor(
+                        (this.texttoread2.split(/[ ,\s]+/).length * 1000 * 60)
+                        / (this.stoptime - this.starttime),
+                    ),
+                };
+                this.previousresults.unshift(watchresult)
+                this.watchtime = 0;
+            },
+            resetWatch() {
+                this.watchplaying = false;
+                this.watchtime = 0;
+                this.texttoread2 = '';
+            },
+        },
+    };
 </script>
 
+
 <style lang="scss">
-.timer ul li{
-  span {
-    min-width: 150px;
-    font-weight: 700;
+  .timer ul li {
+    span {
+      min-width: 150px;
+      font-weight: 700;
+    }
+
+    width: 33%;
+    padding: 0;
+    margin: 0;
   }
-  width:33%;
-  padding:0;
-  margin:0;
-}
+
+  .results {
+    h2 {
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      list-style: none;
+      li{
+        p {}
+      }
+      li:first-child {
+        background: hsla(50, 98%, 53%, 0.3);
+        box-shadow: 3px 3px 3px hsla(293, 78%, 69%, 0.2);
+        border-radius: 0 15%;
+        padding: 5px 0 0 17px;
+        margin: 0 30%;
+      }
+    }
+  }
 
 
 </style>

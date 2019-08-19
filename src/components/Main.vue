@@ -11,7 +11,7 @@
     <button v-on:click="start()"><img class="controlsImg play" blank-color="red" title="play" src="../assets/play2.png">
       {{copy.menu ? copy.controls.start: ''}}
     </button>
-    <button v-on:click="stop()"><img class="controlsImg"  title="pause" src="../assets/pause.svg">
+    <button v-on:click="stop()"><img class="controlsImg"  title="stop" src="../assets/stop.png">
       {{copy.menu ? copy.controls.stop : ''}}
     </button>
     <button v-on:click="restart()"><img class="controlsImg" title="repeat"
@@ -132,7 +132,7 @@
                             for (let i = 1; i < parseInt(this.numberofrows, 10); i++) {
                                 if (this.splitted[this.wordcount + i]) {
                                     this.readtinputteext = this.readtext.concat("$#$");
-                                    this.readtext = this.readtext.concat(
+                                    this.readtext = this.readtinputteext.concat(
                                         this.splitted[this.wordcount + i]
                                     );
                                 }
@@ -209,50 +209,6 @@
     };
 </script>
 <style lang="scss">
-.controls {
-    display: inline-block;
-    font-size: 16px;
-    line-height: 25px;
-    text-align: left;
-    left: 100px;
-    .column:first-of-type {
-      .row{
-        padding-left:10px;
-      }
-    }
-    .column{
-      min-width: 110px;
-      float: left;
-    }
-    .row{
-      border-bottom: 2px solid;
-      margin-bottom: 10px;
-      position:relative;
-      input{
-          margin: 0;
-          padding: 0 5px;
-          border: 0;
-          background: var(--main_active_color, #489e54);
-          color: #fff;
-          height: 23px;
-      }
-      span{
-        position:absolute;
-        right:0;
-        transform: translateX(100%);
-        padding: 0 10px;
-        background: var(--main_active_color, #489e54);
-        color: #fff;
-        border-radius: 0 10px;
-      }
-      span:nth-of-type(1){
-        right:-10px;
-      }
-      span:nth-of-type(2){
-        right:-60px;
-      }
-    }
-}
 
   .container-Main {
     border: 1px solid black;
