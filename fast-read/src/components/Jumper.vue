@@ -43,8 +43,6 @@
             jumpspeed: 100,
             jumprandom: false,
             jumpstop: false,
-            texttoread3: '',
-
             texttoread4: 100,
         }),
         computed: {
@@ -56,6 +54,15 @@
             },
             heightScale: function () {
                 return this.texttoread4.valueOf() *7 +"px";
+            },
+            texttoread3: {
+                get: function () {
+                    return this.$store.state.texttoread
+                },
+                // setter
+                set: function (newValue) {
+                  this.$store.dispatch('setText', newValue)
+                }
             }
         },
         methods: {

@@ -16,6 +16,7 @@ export default new Vuex.Store({
     availableThemes: ['light', 'dark'],
     theme: sessionStorage.getItem('theme') || 'light',
     styles: sessionStorage.getItem('theme') ? Styles[sessionStorage.getItem('theme')] : Styles.light,
+    texttoread: sessionStorage.getItem('texttoread') || 'Text to use',
   },
   mutations: {
     SET_SPEED: (state, speed) => {
@@ -35,9 +36,17 @@ export default new Vuex.Store({
       state.theme = theme;
       state.styles = Styles[theme];
     },
+    SET_TEXT: (state, text) => {
+      state.texttoread = text;
+    },
 
   },
   actions: {
+    setText: ({ commit, state }, newValue) => {
+      sessionStorage.setItem('texttoread', newValue);
+      commit('SET_TEXT', newValue);
+      return state.texttoread;
+    },
     setSpeed: ({ commit, state }, newValue) => {
       sessionStorage.setItem('speed', newValue);
       commit('SET_SPEED', newValue);
@@ -71,6 +80,9 @@ export default new Vuex.Store({
   getters: {
     getSpeed(state) {
       return state.speed;
+    },
+    getText(state) {
+      return state.texttoread;
     },
     getWordperline(state) {
       return state.wordperline;

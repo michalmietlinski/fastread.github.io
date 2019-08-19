@@ -39,7 +39,6 @@ export default {
   name: 'Counter',
   data: () => ({
     // Responsible for content
-    texttoread2: '',
     wordcount: 0,
     playing: false,
     watchtime: 0,
@@ -53,12 +52,17 @@ export default {
       ...mapState([
       'copy'
     ]),
-  },
-  watch: {
-    texttoread(val) {
-      this.partialtext = val.split(' ');
-      this.wordcount = 0;
-    },
+    texttoread2: {
+                get: function () {
+                    return this.$store.state.texttoread
+                },
+                // setter
+                set: function (newValue) {
+                  this.partialtext = val.split(' ');
+                  this.wordcount = 0;
+                  this.$store.dispatch('setText', newValue)
+                }
+            }
   },
   methods: {
     watch() {
