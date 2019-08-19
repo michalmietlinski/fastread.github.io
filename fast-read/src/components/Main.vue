@@ -92,7 +92,6 @@
         name: "Main",
         data: () => ({
             // Responsible for showing text
-            texttoread: "",
             partialtext: "",
             readtext: "Text to display", // HARD CODED - FIND FIX AJ
             wordcount: 0,
@@ -106,13 +105,19 @@
                 'speed',
                 'wordperline',
                 'numberofrows',
-                'copy'
+                'copy',
             ]),
-        },
-        watch: {
-            texttoread(val) {
-                this.partialtext = val.split(" ");
-                this.wordcount = 0;
+            texttoread: {
+                get: function () {
+                    return this.$store.state.texttoread
+                },
+                // setter
+                set: function (newValue) {
+                  this.$store.dispatch('setText', newValue)
+                  this.partialtext = newValue.split(" ");
+                  this.wordcount = 0;
+                }
+
             }
         },
         methods: {
@@ -163,6 +168,8 @@
                 this.reading.bind(this);
                 if (!this.playing) {
                     this.reading(this.currentplay);
+                }else{
+                  this.restart()
                 }
             },
             rewind() {
