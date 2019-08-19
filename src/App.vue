@@ -137,7 +137,7 @@
     ul {
       list-style-type: none;
       text-align: left;
-      min-width:159px ;
+      min-width: 159px;
       padding: 12%;
       border: 1px solid black;
       border-radius: 0 25% 0 25%;
@@ -148,24 +148,7 @@
         display: block;
         font-size: 1.5em;
         background: white;
-        &:hover{
-          &:after {
-            content: "";
-            border: solid #e073ee;
-            border-width: 0 3px 3px 0;
-            display: inline-block;
-            padding: 3px;
-            transform: rotate(135deg);
-          }
-        /*<!--&:before {-->*/
-        /*<!--  content: "";-->*/
-        /*<!--  border: solid #e073ee;-->*/
-        /*<!--  border-width: 0 3px 3px 0;-->*/
-        /*<!--  display: inline-block;-->*/
-        /*<!--  padding: 3px;-->*/
-        /*<!--  transform: rotate(-45deg);-->*/
-        /*<!--}}-->*/
-      }}
+      }
     }
 
     a {
@@ -174,10 +157,18 @@
       color: #424242;
       background: white;
       cursor: pointer;
+      text-decoration: none;
+      margin-bottom: 2px  ;
+
+      &:hover {
+        background-color: hsla(50, 98%, 53%, 0.3);
+        border-radius: 15px;
+      }
 
       &.router-link-exact-active {
         font-weight: 700;
         text-decoration: underline;
+        text-decoration-color: hsla(293, 78%, 69%, 0.7);
       }
 
     }
@@ -190,11 +181,11 @@
 
   .app-wrapper {
     flex: 1 1;
-    margin: 2vh 2vh 0 0 ;
+    margin: 2vh 2vh 0 0;
   }
 
   button {
-    background: #FCD612;
+    background: hsla(50, 98%, 53%, 0.3);
     font-weight: bold;
     font-size: 18px;
     border: none;
@@ -203,13 +194,15 @@
     color: #424242;
 
     &:hover {
-      color:#26294A;
+      color: #26294A;
+      background: hsla(50, 98%, 53%, 0.7);
       outline-style: none;
       box-shadow: 3px 3px 3px hsla(293, 78%, 69%, 0.3);
 
     }
+
     &:focus {
-      outline:0;
+      outline: 0;
     }
   }
 
@@ -241,8 +234,6 @@
     text-transform: uppercase;
   }
 
-
-
   .center {
     text-align: center;
   }
@@ -253,13 +244,15 @@
     text-align: center;
   }
 
+  .resulttext,
   .textareaMain {
+    display: inline-block;
     max-width: 800px;
     min-width: 645px;
     min-height: 215px;
+    font-size: 25px;
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
     padding: 0;
-    margin-right: 0 3px 10px 3px;
-    display: inline-block;
 
     &:focus {
       background-color: #f8f9f9;
@@ -268,13 +261,23 @@
       box-shadow: 3px 3px 3px hsla(293, 78%, 69%, 0.2);
     }
   }
+  .resulttext {
+    text-align: left;
+    font-size: 25px;
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    border: 1px solid black;
+    outline-style: none;
+    box-shadow: 3px 3px 3px hsla(293, 78%, 69%, 0.2);
+    margin-bottom: 5px;
+  }
 
   .controls {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 16px;
     line-height: 25px;
-    text-align: left;
-    max-width: 500px;
 
     .column:first-of-type {
       .row {
@@ -288,7 +291,6 @@
     }
 
     .row {
-      /*border-bottom: 2px solid;*/
       margin-bottom: 10px;
       position: relative;
 
@@ -301,10 +303,10 @@
         height: 23px;
 
         &:focus {
+          color: #26294A;
           background-color: hsla(50, 98%, 53%, 0.3);
           box-shadow: 3px 3px 3px hsla(293, 78%, 69%, 0.3);
           outline-style: none;
-
         }
       }
 
@@ -314,11 +316,11 @@
         transform: translateX(100%);
         padding: 0 10px;
         background: hsla(50, 98%, 53%, 0.3);
-        color:#26294A;
+        color: #e073ee;
         border-radius: 0 10px;
 
         &:hover {
-          color:#26294A;
+          color: #26294A;
           border: 1px solid hsla(50, 98%, 53%, 0.7);
           outline-style: none;
           box-shadow: 3px 3px 3px hsla(293, 78%, 69%, 0.3);
@@ -340,14 +342,7 @@
     text-align: left;
   }
 
-  .resulttext {
-    text-align: center;
-    border: 1px solid;
-    flex: 1;
-    min-width: 70%;
-    display: inline-block;
-    margin-bottom: 2vh;
-  }
+
 
   .settings-wraper {
     position: absolute;

@@ -172,10 +172,14 @@
 
       button {
         margin-bottom: 10px;
+        background: hsla(50, 98%, 53%, 0.7);
+        &:hover {
+          background: hsla(50, 98%, 53%, 1);
+        }
       }
       input {
-        height: 25px;
-        padding-top: 7px;
+        height: 27px;
+        padding-top: 5px;
       }
     }
 
