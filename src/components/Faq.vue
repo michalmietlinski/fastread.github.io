@@ -42,32 +42,6 @@
 </script>
 
 <style lang="scss">
-  .container-faq-css {
-    display: block;
 
-    .faq-css {
-      display: block;
-      max-width: 400px;
-      margin: 4vh auto;
-      border: 1px solid black;
-      border-radius: 0 20% 0 25%;
-      background: white;
-      box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
-
-      li {
-        display: block;
-        text-align: left;
-        margin: 5vh;
-
-        .opened {
-          float: right;
-        }
-      }
-
-      h3 {
-        cursor: pointer;
-      }
-    }
-  }
 
 </style>

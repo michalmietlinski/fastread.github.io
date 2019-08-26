@@ -210,18 +210,5 @@
 </script>
 <style lang="scss">
 
-  .container-Main {
-    border: 1px solid black;
-    background: white;
-    border-radius: 0 8% 0 8%;
-    box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
-    max-width: 900px;
-  }
 
-  .controlsImg {
-    display: inline-block;
-    vertical-align: middle;
-    width: 2.1875em;
-    height: 2.1875em;
-  }
 </style>

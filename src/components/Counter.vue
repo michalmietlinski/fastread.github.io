@@ -113,39 +113,5 @@
 
 
 <style lang="scss">
-  .timer ul li {
-    span {
-      min-width: 150px;
-      font-weight: 700;
-    }
-
-    width: 33%;
-    padding: 0;
-    margin: 0;
-  }
-
-  .results {
-    h2 {
-    }
-
-    ul {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      list-style: none;
-      li{
-        p {}
-      }
-      li:first-child {
-        background: hsla(50, 98%, 53%, 0.3);
-        box-shadow: 3px 3px 3px hsla(293, 78%, 69%, 0.2);
-        border-radius: 0 15%;
-        padding: 5px 0 0 17px;
-        margin: 0 30%;
-      }
-    }
-  }
-
 
 </style>
