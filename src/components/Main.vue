@@ -1,72 +1,63 @@
 <template>
-  <div class="container-Main">
+  <div class="container-main">
     <div class="introduction">
       <h2>{{copy.section ? copy.section.main.header : ''}}</h2>
       <p>{{copy.section ? copy.section.main.describtion : ''}}</p>
     </div>
     <div class="inputtext">
-      <textarea class="textareaMain" v-on:change="restart()" v-model="texttoread"></textarea>
+      <textarea class="textareaMain" v-on:change="restart()" v-model="texttoread" autofocus></textarea>
     </div>
 
-    <button v-on:click="start()"><img class="controlsImg play" blank-color="red" title="play"
-                                      src="../assets/play2.png">
-      {{copy.menu ? copy.controls.start: ''}}
-    </button>
-    <button v-on:click="stop()"><img class="controlsImg" title="stop" src="../assets/stop.png">
-      {{copy.menu ? copy.controls.stop : ''}}
-    </button>
-    <button v-on:click="restart()"><img class="controlsImg" title="repeat"
-                                        src="../assets/repeat.svg"> {{copy.menu ?
-      copy.controls.restart: ''}}
-    </button>
-    <button v-on:click="rewind()"><img class="controlsImg" title="replay"
-                                       src="../assets/replay.png"> {{copy.menu ?
-      copy.controls.rewind: ''}}
-    </button>
-    <button v-on:click="download()"><img class="controlsImg" title="download"
-                                         src="../assets/download.svg"> Download
-    </button>
-    <!-- Brak Cleara ! czyszczenia okna ! -->
-    <br></br>
-
-    <!-- <div class="controls-wraper" v-bind:class="{ activeControls: showContorls }">
-          <div v-on:click="showControls = !showControls">
-          <img class="controlsImg" src="../assets/download.svg" >
-      </div>  -->
-
-    <div class="controls">
-      <div class="column">
-        <div class="row">
-          {{copy.menu ? copy.controls.speed : ''}}
-        </div>
-        <div class="row">
-          {{copy.menu ? copy.controls.words : ''}}
-        </div>
-        <div class="row">
-          {{copy.menu ? copy.controls.rows : ''}}
-        </div>
+    <div class="container_main_container_buttons">
+      <div class="container_buttons">
+        <button v-on:click="start()"><img class="controlsImg play" blank-color="red" title="play"
+                                          src="../assets/play2.png">
+          {{copy.menu ? copy.controls.start: ''}}
+        </button>
+        <button v-on:click="stop()"><img class="controlsImg" title="stop" src="../assets/stop.png">
+          {{copy.menu ? copy.controls.stop : ''}}
+        </button>
+        <button v-on:click="restart()"><img class="controlsImg" title="repeat"
+                                            src="../assets/repeat.svg"> {{copy.menu ?
+          copy.controls.restart: ''}}
+        </button>
+        <button v-on:click="download()" style="display: none">
+          <img class="controlsImg" title="download" src="../assets/download.svg">
+          Download
+        </button>
       </div>
+      <!-- Brak Cleara ! czyszczenia okna ! -->
+      <div class="container_controls">
+        <div class="controls">
+          <div class="column">
+            <div class="row">
+              {{copy.menu ? copy.controls.speed : ''}}
+            </div>
+            <div class="row">
+              {{copy.menu ? copy.controls.words : ''}}
+            </div>
+            <div class="row">
+              {{copy.menu ? copy.controls.rows : ''}}
+            </div>
+          </div>
 
-      <div class="column">
-        <div class="row">
-          <!-- <div class="text"> {{copy.menu ? copy.controls.speed : ''}}</div> -->
-          <input type="number" v-on:change="updateSpeed" :value="speed">
-          <span v-on:click="addSpeed(50)"> +50 </span>
-          <span v-on:click="addSpeed(100)"> +100</span>
-        </div>
-        <div class="row">
-          <!-- <div class="text"> {{copy.menu ? copy.controls.words : ''}}</div> -->
-          <input type="number" v-on:change="updateWordperline" :value="wordperline">
-        </div>
-        <div class="row">
-          <!-- <div class="text"> {{copy.menu ? copy.controls.rows : ''}}</div> -->
-          <input type="number" v-on:change="updateNumberofrows" :value="numberofrows">
+          <div class="column">
+            <div class="row">
+              <input type="number" v-on:change="updateSpeed" :value="speed">
+              <span v-on:click="addSpeed(50)"> +50 </span>
+              <span v-on:click="addSpeed(100)"> +100</span>
+            </div>
+            <div class="row">
+              <input type="number" v-on:change="updateWordperline" :value="wordperline">
+            </div>
+            <div class="row">
+              <input type="number" v-on:change="updateNumberofrows" :value="numberofrows">
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
     <br/>
-
     <div class="resulttext centered">
       <h1 v-for="line in readtext.split('$#$')" v-bind:key="line">{{line}}</h1>
     </div>
@@ -86,7 +77,7 @@
 
 <script>
   import { mapState } from 'vuex';
-  import RSSParser from 'rss-parser' ;
+  import RSSParser from 'rss-parser';
 
   export default {
     name: 'Main',
@@ -98,7 +89,7 @@
       splitted: [],
       currentplay: '',
       playing: false,
-      availableArticles: []
+      availableArticles: [],
     }),
     computed: {
       ...mapState([
@@ -108,24 +99,24 @@
         'copy',
       ]),
       texttoread: {
-        get: function () {
+        get() {
           return this.$store.state.texttoread;
         },
         // setter
-        set: function (newValue) {
+        set(newValue) {
           this.$store.dispatch('setText', newValue);
           this.partialtext = newValue.split(' ');
           this.wordcount = 0;
-        }
+        },
 
-      }
+      },
     },
     methods: {
       reading(play) {
         if (this.wordperline > 0) {
           if (
-            this.wordcount < this.splitted.length &&
-            this.currentplay === play
+            this.wordcount < this.splitted.length
+            && this.currentplay === play
           ) {
             this.playing = true;
             this.readtext = this.splitted[this.wordcount];
@@ -134,7 +125,7 @@
                 if (this.splitted[this.wordcount + i]) {
                   this.readtinputteext = this.readtext.concat('$#$');
                   this.readtext = this.readtinputteext.concat(
-                    this.splitted[this.wordcount + i]
+                    this.splitted[this.wordcount + i],
                   );
                 }
               }
@@ -173,9 +164,6 @@
           this.restart();
         }
       },
-      rewind() {
-        this.wordcount = this.wordcount > 4 ? this.wordcount - 4 : 0;
-      },
       updateSpeed(e) {
         this.$store.dispatch('setSpeed', e.target.value);
         this.restart.bind(this);
@@ -193,21 +181,20 @@
       },
       addSpeed(speed) {
         this.$store.dispatch('setSpeed', parseInt(this.speed, 10) + parseInt(speed, 10));
-
       },
       download() {
-        let parser = new RSSParser();
+        const parser = new RSSParser();
         const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
 
-        parser.parseURL(CORS_PROXY + 'https://www.reddit.com/.rss', (err, feed) => {
+        parser.parseURL(`${CORS_PROXY}https://www.reddit.com/.rss`, (err, feed) => {
           console.log(feed.title);
           feed.items.forEach((entry) => {
             console.log(entry);
             this.availableArticles.push(entry);
           });
         });
-      }
-    }
+      },
+    },
   };
 </script>
 <style lang="scss">
