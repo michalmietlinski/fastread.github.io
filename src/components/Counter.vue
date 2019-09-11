@@ -1,5 +1,5 @@
 <template>
-  <div class="container-Main ">
+  <div class="container-main ">
     <div class="introduction">
       <h2>{{copy.section ? copy.section.counter.header : ''}}</h2>
       <p>{{copy.section ? copy.section.counter.describtion : ''}}</p>
