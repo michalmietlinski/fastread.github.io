@@ -12,33 +12,33 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex';
+  import { mapState } from 'vuex';
 
-    export default {
-        name: 'Main',
-        data: () => ({
-            itemopened: [],
-            // copy: Copy.faq.map((el)=>{
-            //   return Object.assign(el, {opened:false})
-            // }),
-        }),
-        computed: {
-            ...mapState([
-                'copy'
-            ]),
-            // cp: this.copy,
-        },
-        methods: {
-            open: function (index) {
-                if (this.itemopened[index] !== true) {
-                    this.itemopened[index] = true;
-                } else {
-                    this.itemopened[index] = false;
-                }
-                this.$forceUpdate();
-            }
+  export default {
+    name: 'Main',
+    data: () => ({
+      itemopened: [],
+      // copy: Copy.faq.map((el)=>{
+      //   return Object.assign(el, {opened:false})
+      // }),
+    }),
+    computed: {
+      ...mapState([
+        'copy'
+      ]),
+      // cp: this.copy,
+    },
+    methods: {
+      open: function (index) {
+        if (this.itemopened[index] !== true) {
+          this.itemopened[index] = true;
+        } else {
+          this.itemopened[index] = false;
         }
-    };
+        this.$forceUpdate();
+      }
+    }
+  };
 </script>
 
 <style lang="scss">
