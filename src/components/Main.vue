@@ -55,6 +55,8 @@
             </div>
             <div class="row">
               <input type="number" v-on:change="updateNumberofrows" :value="numberofrows">
+              <span v-on:click="addRows(1)"> +1 </span>
+              <span v-on:click="addRows(-1)"> -1</span>
             </div>
           </div>
         </div>
@@ -188,6 +190,10 @@
       addWords(words) {
         this.$store.dispatch('setWordperline',
           (parseInt(this.wordperline, 10) + parseInt(words, 10) >= 0) ? (parseInt(this.wordperline, 10) + parseInt(words, 10)) : (0));
+      },
+      addRows(rows) {
+        this.$store.dispatch('setNumberofrows',
+          (parseInt(this.numberofrows, 10) + parseInt(rows, 10) >= 1) ? (parseInt(this.numberofrows, 10) + parseInt(rows, 10)) : (1));
       },
       download() {
         const parser = new RSSParser();
