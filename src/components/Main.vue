@@ -5,7 +5,8 @@
       <p>{{copy.section ? copy.section.main.describtion : ''}}</p>
     </div>
     <div class="inputtext">
-      <textarea class="textareaMain" v-on:change="restart()" v-model="texttoread" autofocus></textarea>
+      <textarea class="textareaMain" v-on:change="restart()" v-model="texttoread"
+                autofocus></textarea>
     </div>
 
     <div class="container_main_container_buttons">
@@ -49,6 +50,8 @@
             </div>
             <div class="row">
               <input type="number" v-on:change="updateWordperline" :value="wordperline">
+              <span v-on:click="addWords(5)"> +5 </span>
+              <span v-on:click="addWords(-5)"> -5</span>
             </div>
             <div class="row">
               <input type="number" v-on:change="updateNumberofrows" :value="numberofrows">
@@ -181,6 +184,10 @@
       },
       addSpeed(speed) {
         this.$store.dispatch('setSpeed', parseInt(this.speed, 10) + parseInt(speed, 10));
+      },
+      addWords(words) {
+        this.$store.dispatch('setWordperline',
+          (parseInt(this.wordperline, 10) + parseInt(words, 10) >= 0) ? (parseInt(this.wordperline, 10) + parseInt(words, 10)) : (0));
       },
       download() {
         const parser = new RSSParser();
