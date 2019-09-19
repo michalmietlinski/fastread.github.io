@@ -42,8 +42,18 @@ const copy = {
         answear: 'Answear',
       },
       {
-        question: 'Question2',
-        answear: 'Answear2',
+        question: 'Question 2',
+        answear: 'Answear 2',
+      },
+    ],
+    contact: [
+      {
+        name: 'Michał Mietliński',
+        github: 'https://github.com/michalmietlinski',
+      },
+      {
+        name: 'Aleksander Jakubowski',
+        github: 'https://github.com/ol3kjak',
       },
     ],
   },
