@@ -17,6 +17,7 @@ export default new Vuex.Store({
     theme: sessionStorage.getItem('theme') || 'light',
     styles: sessionStorage.getItem('theme') ? Styles[sessionStorage.getItem('theme')] : Styles.light,
     texttoread: sessionStorage.getItem('texttoread') || 'Text to use',
+    previousTimes: JSON.parse(sessionStorage.getItem('previousTimes')) || [],
   },
   mutations: {
     SET_SPEED: (state, speed) => {
@@ -39,7 +40,9 @@ export default new Vuex.Store({
     SET_TEXT: (state, text) => {
       state.texttoread = text;
     },
-
+    SET_PT: (state, previousTimes) => {
+      state.previousTimes = previousTimes;
+    },
   },
   actions: {
     setText: ({ commit, state }, newValue) => {
@@ -74,7 +77,17 @@ export default new Vuex.Store({
         sessionStorage.setItem('theme', newValue);
         commit('SET_THEME', newValue);
       }
-      return state.language;
+      return state.theme;
+    },
+    setPreviousTime: ({ commit, state }, newValue) => {
+        sessionStorage.setItem('previousTimes', JSON.stringify(newValue));
+        commit('SET_PT', newValue);
+      return state.previousTimes;
+    },
+    resetPreviousTime: ({ commit, state }, newValue) => {
+      sessionStorage.setItem('previousTimes', JSON.stringify([]));
+      commit('SET_PT', []);
+      return state.previousTimes;
     },
   },
   getters: {

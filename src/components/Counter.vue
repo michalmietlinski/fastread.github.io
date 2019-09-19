@@ -53,11 +53,10 @@
             starttime: 0,
             stoptime: 0,
             watchresult: {},
-            previousresults: [],
         }),
         computed: {
             ...mapState([
-                'copy'
+                'copy',
             ]),
             texttoread2: {
                 get: function () {
@@ -68,6 +67,15 @@
                     this.$store.dispatch('setText', newValue)
                     this.partialtext = newValue.split(' ');
                     this.wordcount = 0;
+                }
+            },
+            previousresults: {
+                get: function () {
+                    return this.$store.state.previousTimes || []
+                },
+                // setter
+                set: function () {
+                  this.$store.dispatch('setPreviousTime', this.previousresults)
                 }
             }
         },
@@ -99,7 +107,9 @@
                         / (this.stoptime - this.starttime),
                     ),
                 };
-                this.previousresults.unshift(watchresult)
+                const temp=this.previousresults.unshift(watchresult);
+                this.previousresults=temp
+
                 this.watchtime = 0;
             },
             resetWatch() {
