@@ -189,7 +189,7 @@
       },
       addWords(words) {
         this.$store.dispatch('setWordperline',
-          (parseInt(this.wordperline, 10) + parseInt(words, 10) >= 0) ? (parseInt(this.wordperline, 10) + parseInt(words, 10)) : (0));
+          (parseInt(this.wordperline, 10) + parseInt(words, 10) >= 1) ? (parseInt(this.wordperline, 10) + parseInt(words, 10)) : (1));
       },
       addRows(rows) {
         this.$store.dispatch('setNumberofrows',

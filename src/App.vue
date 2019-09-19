@@ -592,12 +592,13 @@
 
         a {
           font-weight: bold;
-          padding: 0 10px;
+          padding: 2vh 10px;
           color: #424242;
           background: white;
           cursor: pointer;
           text-decoration: none;
           margin-bottom: 2px;
+          line-height: 5vh;
 
           &:hover {
             background-color: hsla(50, 98%, 53%, 0.3);
@@ -1055,12 +1056,13 @@
 
         a {
           font-weight: bold;
-          padding: 0 10px;
+          padding: 2vh 10px;
           color: #424242;
           background: white;
           cursor: pointer;
           text-decoration: none;
           margin-bottom: 2px;
+          line-height: 7vh;
 
           &:hover {
             background-color: hsla(50, 98%, 53%, 0.3);
@@ -1140,7 +1142,6 @@
 
             input {
               margin: 0;
-              /*padding: 0 5px;*/
               border: 0;
               background: #F7FCF0;
               color: #e073ee;
@@ -1513,12 +1514,14 @@
 
         a {
           font-weight: bold;
-          padding: 0 10px;
+          padding: 2vh 10px;
           color: #424242;
           background: white;
           cursor: pointer;
           text-decoration: none;
           margin-bottom: 2px;
+          line-height: 7vh;
+
 
           &:hover {
             background-color: hsla(50, 98%, 53%, 0.3);
@@ -1595,7 +1598,6 @@
 
                 input {
                   margin: 0;
-                  /*padding: 0 5px;*/
                   border: 0;
                   background: #F7FCF0;
                   color: #e073ee;
