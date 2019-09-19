@@ -38,12 +38,16 @@ const copy = {
     },
     faq: [
       {
-        question: 'Question',
-        answear: 'Answear',
+        question: 'Why bother?',
+        answear: 'For fun, for checking your skills, and improving them. For keeping eyes sharp and maybe even just to read some text quicker.',
       },
       {
-        question: 'Question 2',
-        answear: 'Answear 2',
+        question: 'How to progress further',
+        answear: 'There are tons of useful articles available on fast reading. After that we suggest some additional training.',
+      },
+      {
+        question: 'What did you learn doing this project?',
+        answear: 'Making tools like this helps to learn new technologies, in our case it was improving RWD, Vue, Vuex skills as well as our overall project managing experience.',
       },
     ],
     contact: [
