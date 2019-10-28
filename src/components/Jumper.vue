@@ -14,9 +14,10 @@
         <button v-on:click="startjump()">{{copy.menu ? copy.controls.start : ''}}</button>
         <button v-on:click="stopjump()">{{copy.menu ? copy.controls.stop : ''}}</button>
         <input type="number" v-model="jumpspeed">
-        <input type="checkbox" v-model="jumprandom">
+
         <div>
-          Random:
+          <input type="checkbox" v-model="jumprandom">
+          Display on random position:
           {{jumprandom}}
         </div>
       </div>

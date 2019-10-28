@@ -374,7 +374,7 @@
       .faq-css {
         display: block;
         max-width: 400px;
-        margin: 4vh auto;
+        margin: 4vh 2vh;
         border: 1px solid black;
         border-radius: 0 50px 0 50px;
         background: white;
@@ -496,6 +496,8 @@
 
         button {
           margin-bottom: 10px;
+          margin-right: 5px;
+          height: 27px;
           background: hsla(50, 98%, 53%, 0.7);
 
           &:hover {
@@ -505,8 +507,11 @@
 
         input {
           height: 27px;
-          padding-top: 5px;
+          &:last-of-type {
+            height: 12px;
+          }
         }
+
       }
 
       #range-slider {
@@ -785,6 +790,8 @@
 
           button {
             margin-bottom: 10px;
+            margin-right: 5px;
+            height: 27px;
             background: hsla(50, 98%, 53%, 0.7);
 
             &:hover {
@@ -794,7 +801,9 @@
 
           input {
             height: 27px;
-            padding-top: 5px;
+            &:last-of-type {
+              height: 12px;
+            }
           }
         }
 
@@ -1244,6 +1253,8 @@
 
           button {
             margin-bottom: 10px;
+            margin-right: 5px;
+            height: 27px;
             background: hsla(50, 98%, 53%, 0.7);
 
             &:hover {
@@ -1253,7 +1264,9 @@
 
           input {
             height: 27px;
-            padding-top: 5px;
+            &:last-of-type {
+              height: 12px;
+            }
           }
         }
 
@@ -1698,6 +1711,8 @@
 
             button {
               margin-bottom: 10px;
+              margin-right: 5px;
+              height: 27px;
               background: hsla(50, 98%, 53%, 0.7);
 
               &:hover {
@@ -1707,7 +1722,9 @@
 
             input {
               height: 27px;
-              padding-top: 5px;
+              &:last-of-type {
+                height: 12px;
+              }
             }
           }
 
@@ -1760,7 +1777,7 @@
           .faq-css {
             display: block;
             max-width: 400px;
-            margin: 4vh auto;
+            margin: 2vh auto;
             border: 1px solid black;
             background: white;
             box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);

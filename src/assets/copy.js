@@ -59,6 +59,10 @@ const copy = {
         name: 'Aleksander Jakubowski',
         github: 'https://github.com/ol3kjak',
       },
+      {
+        name: 'Our other projects',
+        github: '',
+      },
     ],
   },
   Polski: {
