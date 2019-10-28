@@ -163,7 +163,7 @@
       },
       start() {
         this.reading.bind(this);
-        if (!this.playing) {
+        if (!this.playing && this.wordcount < this.splitted.length) {
           this.reading(this.currentplay);
         } else {
           this.restart();

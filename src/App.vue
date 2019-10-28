@@ -121,7 +121,7 @@
         text-align: left;
         min-width: 159px;
         border: 1px solid black;
-        border-radius: 0 25% 0 25%;
+        border-radius: 0 50px 0 50px;
         background: white;
         box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
 
@@ -376,7 +376,7 @@
         max-width: 400px;
         margin: 4vh auto;
         border: 1px solid black;
-        border-radius: 0 20% 0 25%;
+        border-radius: 0 50px 0 50px;
         background: white;
         box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
 
@@ -404,7 +404,7 @@
         max-width: 800px;
         margin: 4vh auto;
         border: 1px solid black;
-        border-radius: 0 20% 0 25%;
+        border-radius: 0 50px 0 50px;
         background: white;
         box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
         .contact-title {
@@ -431,7 +431,7 @@
     //JUMPER
     .container-main-jumper {
       background: white;
-      border-radius: 0 8% 0 8%;
+      border-radius: 0 50px 0 50px;
       border: 1px solid black;
       box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
       max-width: 1400px;
@@ -546,7 +546,7 @@
     .container-main {
       border: 1px solid black;
       background: white;
-      border-radius: 0 8% 0 8%;
+      border-radius: 0 50px 0 50px;
       box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
       max-width: 900px;
     }
@@ -620,7 +620,7 @@
       .container-main {
         border: 1px solid black;
         background: white;
-        border-radius: 0 8% 0 8%;
+        border-radius: 0 50px 0 50px;
         box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
         margin: 0 2vw;
 
@@ -731,7 +731,7 @@
       //JUMPER
       .container-main-jumper {
         background: white;
-        border-radius: 0 8% 0 8%;
+        border-radius: 0 50px 0 50px;
         border: 1px solid black;
         box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
 
@@ -849,7 +849,7 @@
           max-width: 400px;
           margin: 4vh auto;
           border: 1px solid black;
-          border-radius: 0 20% 0 25%;
+          border-radius: 0 50px 0 50px;
           background: white;
           box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
 
@@ -877,7 +877,7 @@
           max-width: 400px;
           margin: 4vh auto;
           border: 1px solid black;
-          border-radius: 0 20% 0 25%;
+          border-radius: 0 50px 0 50px;
           background: white;
           box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
           .contact-title {
@@ -1083,7 +1083,7 @@
       .container-main {
         border: 1px solid black;
         background: white;
-        border-radius: 0 8% 0 8%;
+        border-radius: 0 50px 0 50px;
         box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
 
         .introduction {
@@ -1308,7 +1308,7 @@
           max-width: 400px;
           margin: 4vh auto;
           border: 1px solid black;
-          border-radius: 0 20% 0 25%;
+          border-radius: 0 50px 0 50px;
           background: white;
           box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
 
@@ -1338,7 +1338,7 @@
           max-width: 400px;
           margin: 4vh auto;
           border: 1px solid black;
-          border-radius: 0 20% 0 25%;
+          border-radius: 0 50px 0 50px;
           background: white;
           box-shadow: 3px 3px 3px hsla(50, 98%, 53%, 0.3);
           .contact-title {
